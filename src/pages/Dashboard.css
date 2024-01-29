@@ -1,0 +1,17 @@
+#phone_display{
+    width: 352px;
+    height: 720px;
+    border: solid black 12.5px;
+    border-radius: 25px;
+}
+
+#phone_display_img{
+    width: 335px;
+    height: 698px;
+    border-radius: 15px;
+}
+
+#template_img{
+    border: solid grey 1px;
+    border-radius: 5px;
+}
