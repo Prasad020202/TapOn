@@ -9,7 +9,7 @@ import CoverVideo from './CoverVideo'
 const Section = styled.section`
 /* min-height: ${props=> `calc(100vh - ${props.theme.navHeight}) `};//og */
 min-height: 100vh; //!ognal
-width: 100%;  //vw
+width: 100%;  
 position: relative;
 background-color: white;
 

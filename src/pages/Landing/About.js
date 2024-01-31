@@ -7,7 +7,7 @@ const Section =styled.section`
 
 
 min-height: 100vh;
-width: 100%;//vw
+width: 100%;
 background-color: rgb(30 41 59 );
 /* color: white; */
 display: flex;

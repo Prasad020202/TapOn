@@ -5,7 +5,7 @@ const LogoText =styled.h1`
 
 
   font-family: 'Akaya Telivigala', cursive;
-  font-size: 2.8rem;
+  font-size: 2rem;
   transition: all 0.2s ease;
   color: white;
   
@@ -21,7 +21,7 @@ const Logo = () => {
   return (
     <LogoText>
 
-        <Link to='/'>Tapon.</Link>
+        <Link to='/'>Tapon</Link>
     </LogoText>
   )
 }

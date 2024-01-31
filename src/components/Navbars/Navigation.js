@@ -153,17 +153,19 @@ transition: all 0.3s ease;
 const Navigation = () => {
   const [click, setClick] = useState(false);
 
-  const scrollTo=(id)=>{
-    let element = document.getElementById(id);
-    element.scrollIntoView({
-      behavior:'smooth',
-      block:'start',
-      inline:'nearest'
-    })
+  const scrollTo = (id) => {
+    console.log('Scrolling to:', id);
+    const element = document.getElementById(id);
+    console.log('Element:', element);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    }
     setClick(!click);
-
-
-  }
+  };
 
   return (
     <section id="navigation">
@@ -174,12 +176,12 @@ const Navigation = () => {
           &nbsp;
         </HamburgerMenu>
         <Menu click={click} >
-          <MenuItems onClick={()=> scrollTo('Home')}>Home</MenuItems>
-          <MenuItems onClick={()=> scrollTo('About')}>About</MenuItems>
-          <MenuItems onClick={()=> scrollTo('Roadmap')}>Roadmap</MenuItems>
-          <MenuItems onClick={()=> scrollTo('Showcase')}>Showcase</MenuItems>
-          <MenuItems onClick={()=> scrollTo('Team')}>Team</MenuItems>
-          <MenuItems onClick={()=> scrollTo('Faq')}>Faq</MenuItems>
+          <MenuItems onClick={() => scrollTo('Home')}>Home</MenuItems>
+          <MenuItems onClick={() => scrollTo('About')}>About</MenuItems>
+          <MenuItems onClick={() => scrollTo('Roadmap')}>Roadmap</MenuItems>
+          <MenuItems onClick={() => scrollTo('Showcase')}>Showcase</MenuItems>
+          <MenuItems onClick={() => scrollTo('Team')}>Team</MenuItems>
+          <MenuItems onClick={() => scrollTo('Faq')}>Faq</MenuItems>
           <MenuItems>
           <div className="mobile">
             <Link to="/auth/Login">

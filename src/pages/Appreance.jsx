@@ -3,8 +3,8 @@ import { auth, db, imageDb } from "./auth/firebase";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
-// import img1 from "../assets/img/Theme1.jpg"
-// import img2 from "../assets/img/Theme2.jpg"
+import img1 from "../assets/img/Theme1.jpg"
+import img2 from "../assets/img/Theme2.jpg"
 
 import template1 from "../assets/img/template_1.png"
 import template2 from "../assets/img/template_2.png"
@@ -63,7 +63,6 @@ const Appreance = () => {
     updateDoc(docRef, data)
       .then(() => {
         console.log("Document has been added successfully");
-        console.log(document); 
         setTheme_Selected(customTheme);
       })
       .catch((error) => {

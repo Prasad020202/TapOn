@@ -273,15 +273,15 @@ const Navigation = () => {
         &nbsp;
         </HamburgerMenu>
         <Menu click={click}>
-          <MenuItems onClick={()=> scrollTo('')}>&nbsp;</MenuItems>
-          <MenuItems onClick={()=> scrollTo('')}>&nbsp;</MenuItems>
-          <MenuItems onClick={()=> scrollTo('')}>&nbsp;</MenuItems>
-          <MenuItems onClick={()=> scrollTo('')}>&nbsp;</MenuItems>
+          <MenuItems >&nbsp;</MenuItems>
+          <MenuItems >&nbsp;</MenuItems>
+          <MenuItems >&nbsp;</MenuItems>
+          <MenuItems >&nbsp;</MenuItems>
           <Link to="/dashboard" ><MenuItems>Dashboard</MenuItems></Link>
           <Link to="/Appreance" ><MenuItems> Appearance</MenuItems></Link>
-          <MenuItems onClick={()=> scrollTo('')}>Plan</MenuItems>
-          <MenuItems onClick={()=> scrollTo('')}>Settings</MenuItems>
-          <MenuItems onClick={()=> scrollTo('')}>&nbsp;</MenuItems>
+          <MenuItems ><Link to={"/auth/plans"}>Plan</Link></MenuItems>
+          <MenuItems >Settings</MenuItems>
+          <MenuItems >&nbsp;</MenuItems>
           
           <MenuItems>
         

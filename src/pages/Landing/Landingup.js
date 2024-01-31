@@ -24,15 +24,13 @@ function Landingup() {
     {/* <Navprof/> */}
 
    <Navigation/>
-    <Home/>
 
-
-    <About/>
-    <Roadmap/>
-
-
-    <Showcase/>
-    <Team/>
+    <div id="Home"><Home/></div>
+    <div id="About" ><About/></div>
+    <div id="Roadmap"><Roadmap/></div>
+    <div id="Showcase"><Showcase/></div>
+    <div id="Team"><Team/></div>
+    <div id="Faq"><Faq/></div>
     <Faq/>
     <Bigf/> 
 

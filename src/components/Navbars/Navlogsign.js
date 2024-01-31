@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 const Section = styled.section`
  width: 100%;
  background-color:rgb(30 41 59 );
+ /* background-color: black; */
     opacity: 1;
 
 
@@ -18,7 +19,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: 95%;
-height: 4rem;
+height: 3rem;
 margin: 0 auto;
 
 
