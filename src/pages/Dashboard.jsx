@@ -42,6 +42,8 @@ import styled, {ThemeProvider} from "styled-components";
 
 
 import { getThemeColors } from '../components/Textthemes';
+import { Tilt } from "react-tilt";
+import Edittext from "../components/Edittext";
 
 
 
@@ -52,8 +54,28 @@ const Phoneborder = styled.div`
   border-color: black;
   border-radius: 12px; 
   width: 290px;
-  height: 600px;
-  margin-top: 10px;
+  height: 550px;
+  margin-top:3em;
+  box-shadow: 0 0 10px black;
+  overflow: hidden;
+  overflow-y: scroll;
+
+
+
+   /* Customizing the scrollbar */
+   &::-webkit-scrollbar {
+    width: 0.5px; /* Adjust the width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #484848; /* Color of the thumb */
+    border-radius: 6px; /* Radius of the thumb */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the track */
+  }
+  
 `;
 
 
@@ -62,6 +84,7 @@ const Phoneborder = styled.div`
 const Phonecontainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: fit-content;
   align-items: center;
   color: ${props => props.theme.textTemp};
   
@@ -169,6 +192,18 @@ const BottomText = styled.div`
   margin-top: auto; 
 `;
 
+
+const Servicescontainer = styled.div`
+font-size: small;
+margin-top: 20px;
+margin-bottom: 2px;
+  
+
+
+
+
+`
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -226,6 +261,7 @@ const Dashboard = () => {
   // const [textColor5, setTextColor5] = useState("");
 
   const [textColor, setTextColor] = useState('');
+ 
   
 
   
@@ -438,19 +474,19 @@ const Dashboard = () => {
 
                    <div className="relative z-0 w-full mb-5 group">
                        <input type="text" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputCname} onChange={(e) => {setInputCname(e.target.value)}}/>
-                       <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company Name</label>
+                       <label for="floating_email" className="flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company Name<Edittext className="ml-1 mt-0.5"/></label>
                    </div>
                    <div className="relative z-0 w-full mb-5 group">
                        <input type="text" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputPhoneNo} onChange={(e) => {setInputPhoneNo(e.target.value)}} />
-                       <label for="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Phone Number</label>
+                       <label for="floating_password" className=" flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Phone Number <Edittext className="ml-1 mt-0.5"/></label>
                    </div>
                    <div className="relative z-0 w-full mb-5 group">
                        <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputAddress} onChange={(e)=>{setInputAddress(e.target.value)}} />
-                       <label for="floating_repeat_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Address</label>
+                       <label for="floating_repeat_password" className="flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Address <Edittext className="ml-1 mt-0.5"/></label>
                    </div>
                    <div className="relative z-0 w-full mb-5 group">
                        <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputDesc} onChange={(e)=>{setInputDesc(e.target.value)}} />
-                       <label for="floating_repeat_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Description</label>
+                       <label for="floating_repeat_password" className="flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Description <Edittext className="ml-1 mt-0.5"/></label>
                    </div>
                    <div className="grid md:grid-cols-2 md:gap-6">
                      <div className="relative z-0 w-full mb-5 group">
@@ -494,10 +530,11 @@ const Dashboard = () => {
 
 
 
-
+        <Tilt className="Tilt"  options={{ max: 40, perspective: 1000, easing: 'cubic-bezier(.03,.98,.52,.99)', scale: 1.05}}>
           
         <Phoneborder>
-  {/* <img src={theme_url} id="" className="w-full h-full object-cover rounded-sm" /> */}
+       
+  
 
   
     <Phonecontainer  style={{ background: `url(${theme_url}) center/cover no-repeat` }}>
@@ -558,13 +595,21 @@ const Dashboard = () => {
         </div>
       </Cardbottoncontainer>
 
+
+      <Servicescontainer>
+        services
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. At aut animi molestiae. Veniam, molestiae maxime enim magnam a fugiat omnis repellat modi rerum sit dolore totam id sunt blanditiis accusantium.
+      </Servicescontainer>
+
       <BottomText>
         tapON
       </BottomText>
 
     </Phonecontainer>
+    
 
 </Phoneborder>
+</Tilt>
 
         </div>
 
