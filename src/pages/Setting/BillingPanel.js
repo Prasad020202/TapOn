@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../components/Navbars/Button'
+import { Link } from 'react-router-dom';
+import { auth, db } from '../auth/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 
 const PadBox = styled.div`
@@ -41,17 +44,37 @@ const Label = styled.div`
 `;
 
 const BillingPanel = () => {
+
+  const [plan, setPlan] = useState("Parth");
+  const[userID,setUserID] = useState("");
+
+  useEffect(()=>{
+    auth.onAuthStateChanged((user) => {      
+      setUserID(user.uid);
+    })  
+    setData();
+  })
+
+  const setData = async() =>{
+    const docRef = doc(db, "UserInfo", userID);
+
+    const docData = await getDoc(docRef);
+
+    setPlan(docData.data().Plan)
+
+  }
+
   return (
     <PadBox>
       
          <Label>
           <h2>Change Plan</h2>
-            <p>Your Current plan is Free</p>
+            <p>{`Your Current plan is ${plan}`}</p>
 
 
           </Label>
           <Buttoncontainer>
-              <Button text ="Change Plan" />
+              <Link to={'/auth/plans'}><Button text ="Change Plan" /></Link>
               </Buttoncontainer>
               </PadBox>
   )

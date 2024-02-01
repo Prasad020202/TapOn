@@ -1,17 +1,232 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, db } from "./firebase";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
+import Smallf from "../../components/Footers/Smallf";
 
 export default function Pricing() {
+
+  const navigate = useNavigate();
+
+  const[AddPlan,setAddPlan] = useState("");
+  const[userID, setuserID] = useState("");
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+
+      setuserID(user.uid);
+
+    });
+  });
+
+  const AddPlanA = () =>{
+    console.log("Hello A");
+    setAddPlan("Guardian")
+    const docRef = doc(db, "UserInfo", userID);
+
+    const data = {
+      Plan: "Guardian"
+    }
+
+    updateDoc(docRef, data)
+    .then(docRef => {
+      console.log("Entire Document has been updated successfully");
+      navigate('/dashboard');
+    }).catch((e)=>{console.log(e);})
+
+  }
+  const AddPlanB = () =>{
+    console.log("Hello A");
+    setAddPlan("Mage");
+
+    const docRef = doc(db, "UserInfo", userID);
+
+    const data = {
+      Plan: "Mage"
+    }
+
+    updateDoc(docRef, data)
+    .then(docRef => {
+      console.log("Entire Document has been updated successfully");
+      navigate('/dashboard');
+    }).catch((e)=>{console.log(e);})
+  }
+  const AddPlanC = () =>{
+    console.log("Hello A");
+    setAddPlan("Phantom");
+
+    const docRef = doc(db, "UserInfo", userID);
+
+    const data = {
+      Plan: "Phantom"
+    }
+
+    updateDoc(docRef, data)
+    .then(docRef => {
+      console.log("Entire Document has been updated successfully");
+      navigate('/dashboard');
+    }).catch((e)=>{console.log(e);})
+  }
     return (
       <>
+
+<container className="bg-gray-300 font-sans  lg:bg-transparent flex flex-col lg:flex-row absolute justify-center lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 px-5 xl:px-0 py-8 lg:py-0 w-full gap-6 items-center lg:items-stretch">
+          
+            <div  className="relative  border-black rounded-xl">
+              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+                <div className="flex flex-row gap-5 items-center">
+                  <div><Guardian /></div>
+                  <span className="text-3xl font-bold">Guardian</span>
+                </div>
+                <span className="flex mt-4 text-[#A9A9AA] text-2xl">
+                  What You&apos;ll Get
+                </span>
+               
+                <ul>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Edit up to 100 hours of podcast audio files.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Set your landing page.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Advanced analytics.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Day support</p>
+                      </li>
+                    </ul>
+             
+                <div className="border border-dashed border-[#A9A9AA] tracking-widest my-4" />
+                <div className="h-36">
+                  <div className="bottom-6 left-6 right-6 absolute">
+                    <div className="flex justify-start items-baseline">
+                      <span className="text-[32px] font-bold ">Free Forever</span>
+                    </div>
+                    {/* <Link to={'/dashboard'}> */}
+                      <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl" onClick={AddPlanA}>
+                        Choose
+                      </button>
+                    {/* </Link> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div  className="relative  border-black rounded-xl">
+              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+                <div className="flex flex-row gap-5 items-center">
+                  <div><Mage/></div>
+                  <span className="text-3xl font-bold">Mage</span>
+                </div>
+                <span className="flex mt-4 text-[#A9A9AA] text-2xl">
+                  What You&apos;ll Get
+                </span>
+               
+                <ul>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Edit up to 100 hours of podcast audio files.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Set your landing page.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Advanced analytics.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Day support</p>
+                      </li>
+                    </ul>
+             
+                <div className="border border-dashed border-[#A9A9AA] tracking-widest my-4" />
+                <div className="h-36">
+                  <div className="bottom-6 left-6 right-6 absolute">
+                    <div className="flex justify-start items-baseline">
+                      <span className="text-[32px] font-bold ">$450</span>
+                    </div>
+                    <Link to={'/dashboard'}>
+                      <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl" onClick={AddPlanB}>
+                        Choose
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div  className="relative  border-black rounded-xl">
+              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+                <div className="flex flex-row gap-5 items-center">
+                  <div><Phantom/></div>
+                  <span className="text-3xl font-bold">Phantom</span>
+                </div>
+                <span className="flex mt-4 text-[#A9A9AA] text-2xl">
+                  What You&apos;ll Get
+                </span>
+               
+                  {/* <div
+                    
+                    className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg"
+                  > */}
+                    {/* <div className="pt-1 shrink-0">
+                      <RightIcon />
+                    </div> */}
+                    <ul>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Edit up to 100 hours of podcast audio files.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Set your landing page.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Advanced analytics.</p>
+                      </li>
+                      <li className="flex flex-row gap-2.5 items-start mt-6 text-left text-lg">
+                        <RightIcon />
+                        <p>Day support</p>
+                      </li>
+                    </ul>
+                  {/* </div> */}
+             
+                <div className="border border-dashed border-[#A9A9AA] tracking-widest my-4" />
+                <div className="h-36">
+                  <div className="bottom-6 left-6 right-6 absolute">
+                    <div className="flex justify-start items-baseline">
+                      <span className="text-[32px] font-bold ">$600</span>
+                    </div>
+                    <Link to={'/dashboard'}>
+                      <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl" onClick={AddPlanC}>
+                        Choose
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </container>
+      
+
+
         {/* <img
           src="https://www.tailwindtap.com/assets/components/pricing/flexible-pricing/office.jpg"
           alt="high demand pricing plan background"
           className="h-screen w-full opacity-70 hidden lg:inline-block"
         /> */}
-        <container className="bg-gray-300 font-sans  lg:bg-transparent flex flex-col lg:flex-row absolute justify-center lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 px-5 xl:px-0 py-8 lg:py-0 w-full gap-6 items-center lg:items-stretch">
+        {/* <container className="bg-gray-300 font-sans  lg:bg-transparent flex flex-col lg:flex-row absolute justify-center lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 px-5 xl:px-0 py-8 lg:py-0 w-full gap-6 items-center lg:items-stretch">
           {PRICING_DATA.map((data, index) => (
             <div key={index} className="relative  border-black rounded-xl">
-              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+              <div className="max-w-sm xl:w-[384px] p-6 bg-red-800 group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div>{data.iconComponent}</div>
                   <span className="text-3xl font-bold">{data.name}</span>
@@ -46,7 +261,8 @@ export default function Pricing() {
               </div>
             </div>
           ))}
-        </container>
+        </container> */}
+
       </>
     );
   }
