@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword , getAdditionalUserInfo, signInWithPopup
 import { auth, db } from './firebase';
 // import { useRouter } from 'next/navigation'
 // import Link from "next/link";
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 import { GoogleAuthProvider } from "firebase/auth";
@@ -59,7 +59,7 @@ export default function Register() {
                 //     console.log("FireStore error is",e.message);
                 // })
 
-                setDoc(userRef, data)
+                updateDoc(userRef, data)
     .then(() => {
         console.log("Document has been added successfully");
 
