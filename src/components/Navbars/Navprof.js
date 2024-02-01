@@ -279,7 +279,7 @@ const Navigation = () => {
           <MenuItems >&nbsp;</MenuItems>
           <Link to="/dashboard" ><MenuItems>Dashboard</MenuItems></Link>
           <Link to="/Appreance" ><MenuItems> Appearance</MenuItems></Link>
-          <MenuItems ><Link to={"/auth/plans"}>Plan</Link></MenuItems>
+          <MenuItems ><Link to="/auth/plans">Plan</Link></MenuItems>
           <Link to="/Settings/ProfileSetting" ><MenuItems >Settings</MenuItems></Link>
           <MenuItems >&nbsp;</MenuItems>
           

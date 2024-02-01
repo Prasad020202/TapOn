@@ -34,8 +34,10 @@ const Buttonudash = () => {
             <div className="dropdown-content absolute bg-white border rounded mt-2 " style={dropdownStyle}>
               <ul className="list-none p-2 text-left">
                 <li className="cursor-pointer py-1">
-                  <FontAwesomeIcon icon={faIndianRupeeSign}  className="mr-2" />
-                  Change Plan
+                  <Link to={'/auth/plans'}>
+                    <FontAwesomeIcon icon={faIndianRupeeSign}  className="mr-2" />
+                    Change Plan
+                  </Link>
                 </li>
                 <Link to="/">
                 <li className="cursor-pointer py-1">
