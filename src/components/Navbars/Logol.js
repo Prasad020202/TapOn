@@ -5,7 +5,7 @@ const LogoText =styled.h1`
 
 
   font-family: 'Akaya Telivigala', cursive;
-  font-size: 3rem;
+  font-size: 2rem;
   transition: all 0.2s ease;
   color: black;
   

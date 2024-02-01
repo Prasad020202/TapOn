@@ -12,6 +12,8 @@ import Admin from './pages/Admin';
 import Remix from './pages/Remix';
 import Appreance from './pages/Appreance';
 import Landingup from './pages/Landing/Landingup'
+import Settings from './pages/Setting/Smain'
+
 
 
 
@@ -19,6 +21,10 @@ function App() {
   const Login = "login";
   const Register = "register";
   const Uname = "uname";
+
+  const ProfileSetting = "ProfilePanel";
+  const Password = "PasswordPanel";
+  const Billing = "BillingPanel";
 
   return (
   <>
@@ -36,6 +42,9 @@ function App() {
             <Route path='/Admin' element={<Admin/>}/>
 
             <Route path='/Appreance' element={<Appreance/>}/>
+            <Route path='/Settings' element={<Settings/>}/>
+            <Route path="/Settings/:id" element={<Settings/>}/>
+
 
 
 <Route path='/update' element={<Update/>} />

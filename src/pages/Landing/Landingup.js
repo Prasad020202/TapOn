@@ -12,6 +12,7 @@ import Footer from './Footer'
 import Bigf from '../../components/Footers/Bigf'
 import Navprof from '../../components/Navbars/Navprof'
 import Error from '../Error/Error'
+import Smain from '../Setting/Smain'
 
 
 
@@ -19,9 +20,9 @@ function Landingup() {
   return (
     <>
     
+    
 
 
-    {/* <Navprof/> */}
 
    <Navigation/>
 

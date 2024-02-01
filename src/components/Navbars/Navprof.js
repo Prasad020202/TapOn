@@ -107,7 +107,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: 90%;
-height: 5rem;
+height: 3rem;
 margin: 0 auto;
 
 .mobile{
@@ -280,7 +280,7 @@ const Navigation = () => {
           <Link to="/dashboard" ><MenuItems>Dashboard</MenuItems></Link>
           <Link to="/Appreance" ><MenuItems> Appearance</MenuItems></Link>
           <MenuItems ><Link to={"/auth/plans"}>Plan</Link></MenuItems>
-          <MenuItems >Settings</MenuItems>
+          <Link to="/Settings/ProfileSetting" ><MenuItems >Settings</MenuItems></Link>
           <MenuItems >&nbsp;</MenuItems>
           
           <MenuItems>

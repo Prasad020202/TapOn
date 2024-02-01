@@ -140,25 +140,11 @@ const Appreance = () => {
           </div> */}
         </div>
         <div class="border-2 w-0 h-ful"></div>
-
-
-
-
-
-
-{/* right side */}
-
-
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <div className="border-8 border-black  rounded-xl h-lvh fixed" id="phone_display">
             <img src={theme_url} id="phone_display_img"/>
           </div>
         </div>
-
-
-
-
-
       </div>
       </div>
     </>

@@ -44,6 +44,21 @@ import styled, {ThemeProvider} from "styled-components";
 import { getThemeColors } from '../components/Textthemes';
 import { Tilt } from "react-tilt";
 import Edittext from "../components/Edittext";
+import Button from '../components/Navbars/Button'
+
+
+
+const Section = styled.div`
+margin-top: 20px;
+  
+
+
+
+
+
+
+
+`
 
 
 
@@ -59,6 +74,8 @@ const Phoneborder = styled.div`
   box-shadow: 0 0 10px black;
   overflow: hidden;
   overflow-y: scroll;
+  
+  
 
 
 
@@ -199,10 +216,19 @@ margin-top: 20px;
 margin-bottom: 2px;
   
 
-
-
-
 `
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: aliceblue;
+
+  /* Add any additional styles for your cards here */
+`;
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -245,7 +271,7 @@ const Dashboard = () => {
 
   const [InputDesc, setInputDesc] = useState("");
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = React.useState(false);
   const [UN,setUN] = useState("");
 
   const [theme_url, setTheme_url] = useState("");
@@ -437,6 +463,8 @@ const Dashboard = () => {
       });
   };
 
+  
+
   return (
     <ThemeProvider theme={getThemeColors(Theme_Selected)}>
 
@@ -444,7 +472,7 @@ const Dashboard = () => {
     <>
       <DashNav/>
 
-      <div className="flex w-full h-auto"> {/*section*/ }
+      <Section className="flex w-full h-auto"> {/*section*/ }
         <div className="flex flex-col w-2/3  ml-4 ">  {/*leftcontainer*/ }
 
         
@@ -467,10 +495,12 @@ const Dashboard = () => {
 
             
 
-            <div className="flex h-fit mt-12  ml-8"> {/*textbox*/ }
+            <div className=" h-fit mt-12  ml-8  "> {/*textbox*/ }
+            
+            <h2 className=" font-bold text-xl">Details</h2>
               
 
-              <form className=" w-3/4    mt-12 mb-12">
+              <form className=" w-3/4 mt-10 mb-12">
 
                    <div className="relative z-0 w-full mb-5 group">
                        <input type="text" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputCname} onChange={(e) => {setInputCname(e.target.value)}}/>
@@ -509,12 +539,131 @@ const Dashboard = () => {
                      </div>
                  
                    </div>
-                   <button type="submit" className="text-white bg-blue-200 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " onClick={submitInNewWay}>Submit</button>
+                   {/* <Button text ="Submit" onClick={submitInNewWay} /> */}
+                   <button type="submit" className="text-white bg-blue-200 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800  mt-5" onClick={submitInNewWay}>Submit</button>
               </form>
 
+              <h3 className=" font-bold text-xl">Services</h3>
+              <div className="mt-5" onClick={() => setShowModal(true)}>
+              <Button text ="Add Service +" /></div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+              {showModal ? (
+        <>
+          <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div className="border-0 rounded-lg shadow-lg relative w-2/5 my-6 mx-auto  ">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                  <h3 className="text-3xl font-semibold">
+                    Add Service Details
+                  </h3>
+                  <button
+                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => setShowModal(false)}
+                  >
+                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                      x
+                    </span>
+                  </button>
+                </div>
+
+
+
+                {/*body*/}
+                <div className="relative p-6 flex flex-row h-full">
+                  <div className=" flex items-center w-20 h-15  bg-black mr-10 rounded-lg text-white font-light text-xs  justify-center cursor-pointer ">Add Image</div>
+
+
+                  <div className="relative z-0 w-full mb-5 group">
+                       <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputDesc} onChange={(e)=>{setInputDesc(e.target.value)}} />
+                       <label for="floating_repeat_password" className="flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Description <Edittext className="ml-1 mt-0.5"/></label>
+                   </div>
+                </div>
+
+
+
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            </div>
+
+
+
+
+            
 
 
 
@@ -583,6 +732,18 @@ const Dashboard = () => {
         </a>
       </Linkcontainer>
 
+
+      <Servicescontainer>
+        <Card>
+
+        </Card>
+        <Card>
+          
+        </Card>
+      </Servicescontainer>
+
+      
+
       <Cardbottoncontainer>
         <div id="services">
           <img src={saveCardImg} alt="" />
@@ -596,10 +757,7 @@ const Dashboard = () => {
       </Cardbottoncontainer>
 
 
-      <Servicescontainer>
-        services
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At aut animi molestiae. Veniam, molestiae maxime enim magnam a fugiat omnis repellat modi rerum sit dolore totam id sunt blanditiis accusantium.
-      </Servicescontainer>
+      
 
       <BottomText>
         tapON
@@ -617,7 +775,7 @@ const Dashboard = () => {
 
 
 
-      </div>
+      </Section>
       
     </>
     </ThemeProvider>
