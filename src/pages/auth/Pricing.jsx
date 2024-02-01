@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Pricing() {
     return (
       <>
@@ -34,9 +36,11 @@ export default function Pricing() {
                     <div className="flex justify-start items-baseline">
                       <span className="text-[32px] font-bold ">{data.price}</span>
                     </div>
-                    <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl">
-                      Choose
-                    </button>
+                    <Link to={'/dashboard'}>
+                      <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl">
+                        Choose
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

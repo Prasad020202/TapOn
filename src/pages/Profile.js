@@ -2,17 +2,148 @@ import Nav from "../components/Navbars/Nav";
 import Bigf from "../components/Footers/Bigf";
 
 import { collection, doc, getDoc } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { auth, db } from './auth/firebase';
 
+import phoneImg from "../assets/img/phone-call.png"
+import AddressImg from "../assets/img/location.png"
+import linkImg from "../assets/img/link.png"
+import mailImg from "../assets/img/mail.png"
+
+import twitterImg from "../assets/img/twitter (1).png"
+import instaImg from "../assets/img/instagram.png"
+import youtubeImg from "../assets/img/youtube.png"
+import fbImg from "../assets/img/facebook.png"
+
+import saveCardImg from "../assets/img/download.png"
+import addContactImg from "../assets/img/bookmark.png"
+
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
+import img1 from '../assets/img/gamer.png'
+
+import styled from "styled-components";
+
+const Phonecontainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  & > .rounded-full {
+    margin-bottom: 20px;
+  }
+
+  & > h1,
+  & > h2 {
+    margin-top: 20px;
+  }
+`;
+
+const Infocontainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    & img {
+      margin-right: 10px;
+      height: 1.3em;
+    }
+  }
+`;
+
+const Linkcontainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  & a {
+    margin-right: 25px;
+    /* border-radius: 50%; */
+    overflow: hidden;
+  }
+
+  & a img {
+    width: 30px; 
+    height: 30px;
+    object-fit: cover; 
+  }
+
+  & a:last-child {
+    margin-right: 0;
+  }
+`;
+
+const Cardbottoncontainer = styled.div`
+  display: flex;
+  cursor: pointer;
+  margin-top: 20px;
+
+  & > div#services {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 10px;
+    background-color: #efefef;
+    border-radius: 10px;
+    
+
+    & img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+  }
+`;
+
+const BottomText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 15vh; 
+  margin-top: auto; 
+`;
+
 export default function Profile() {
+
+  const pdfRef = useRef();
 
   const { id } = useParams();
   // const [userID, setUserID] = useState("");
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [displayCname, setdisplayCname] = useState("");
+  const [displaylink1, setdisplaylink1] = useState("");
+  const [displayPhoneNo, setdisplayPhoneNo] = useState("");
+
+  const [displayUserName, setDisplayUserName] = useState("");
+
+  const [displayPhoto, setDisplayPhoto] = useState("");
+  const [displayAddress, setDisplayAddress] = useState("");
+
+  const [displayFacebook_Link, setDisplayFacebook_Link] = useState("Please Enter Your Facebook Link");
+  const [displayInsta_Link, setDisplayInsta_Link] = useState("Please Enter Your Instagram Link");
+  const [displayX_Link, setdisplayX_Link] = useState("Please Enter Your Twitter Link");
+  const [displayDesc, setDisplayDesc] = useState("Enter Your Desc");
+
+  const [displayFullName, setDisplayFullName] = useState("Enter Your Desc");
+
+  const [theme_url, setTheme_url] = useState("");
+
+  const [UN,setUN] = useState("");
+
 
   // useEffect(() => {
   //   auth.onAuthStateChanged((user) => {
@@ -34,6 +165,22 @@ export default function Profile() {
 
         if (docSnap.exists()) {
           setUserData(docSnap.data());
+          setTheme_url(docSnap.data().Theme_url)
+
+          setdisplayCname(docSnap.data().Company_Name);
+    setdisplaylink1(docSnap.data().Link);
+    setdisplayPhoneNo(docSnap.data().PhoneNumber);
+    setDisplayUserName(docSnap.data().User_Name);
+    setDisplayPhoto(docSnap.data().Profile_URl);
+    setDisplayAddress(docSnap.data().Address);
+    setDisplayFacebook_Link(docSnap.data().Facebook_Link);
+    setDisplayInsta_Link(docSnap.data().Instagram_Link);
+    setdisplayX_Link(docSnap.data().X_Link);
+    setDisplayDesc(docSnap.data().Desc);
+
+    setUN(docSnap.data().username)
+
+    setDisplayFullName(docSnap.data().Full_Name)
         } else {
           setError("Profile not found");
         }
@@ -48,7 +195,36 @@ export default function Profile() {
     fetchData();
   }, [id]);
 
-  
+  const downloadPDF = () =>{
+    const input = pdfRef.current;
+
+    html2canvas(input).then((canvas) => {
+    
+    const imgData = canvas.toDataURL('image/png');
+    
+    const pdf = new jsPDF('p', 'mm', 'a4', true);
+    
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    
+    const imgWidth = canvas.width;
+    
+    const imgHeight = canvas.height;
+    
+    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+    
+    const imgX = (pdfWidth - imgWidth * ratio) / 2;
+    
+    const imgY = 30;
+    
+    pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+    
+    pdf.save('MiniWebsite.pdf');
+    
+    });
+  }
+
 
   return (
     <>
@@ -60,7 +236,7 @@ export default function Profile() {
     
     
       <Nav transparent />
-      <main className="profile-page">
+      {/* <main className="profile-page">
         <section className="relative block h-500-px">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
@@ -181,7 +357,92 @@ export default function Profile() {
           </div>
         </section>
         
-      </main>
+      </main> */}
+
+<div className="border-8 border-black rounded-xl h-lvh sticky m-auto  mt-32 mb-32" id="phone_display" ref={pdfRef} >
+                <img src={theme_url} id="" className="absolute inset-0 w-full h-full object-cover"/>
+
+                {/* data which will be display on the theme */}
+
+                {/* <h1 className="absolute inset-0 text-white font-bold text-center">{displayCname}</h1>
+
+                <h2 className="absolute  text-white font-bold text-center">{displayFullName}</h2> */}
+
+                <div className="absolute inset-0  text-center items-center text-white font-bold">
+                <Phonecontainer>
+
+<div className="rounded-full bg-black w-24 h-24 ">
+  <img src={img1} alt="not found" />
+</div>
+
+<h1>{displayCname}</h1>
+<h2>{displayFullName}</h2>
+
+
+<Infocontainer>                   
+    <div>
+    <img src={phoneImg}  alt="" />
+        {displayPhoneNo}
+    </div>
+
+    <div>
+    <img src={AddressImg}  alt="" />
+        {displayAddress}
+    </div>
+    
+    <div>
+    <img src={linkImg}  alt="" />
+        {displaylink1}
+    </div>           
+  
+    <div>
+    <img src={mailImg}  alt="" />
+        {displayDesc}
+    </div>       
+
+</Infocontainer>
+
+
+<Linkcontainer>
+
+
+  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+    <img src={twitterImg} alt="" />
+  </a>
+  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    <img src={instaImg} alt="" />
+  </a>
+  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+    <img src={youtubeImg} alt="" />
+  </a>
+  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+    <img src={fbImg} alt="" />
+  </a>
+
+</Linkcontainer>
+
+
+<Cardbottoncontainer>
+<div id="services" onClick={downloadPDF}>
+<img src={saveCardImg} alt="" />
+<div>Save Card</div>
+</div>
+
+<div id="services">
+<img src={addContactImg} alt="" />
+<div>Add Contact</div>
+</div>
+</Cardbottoncontainer>
+
+<BottomText>
+
+tapON
+
+</BottomText>
+</Phonecontainer>
+                </div>
+            </div>
+
       <Bigf />
       </div>
       )}

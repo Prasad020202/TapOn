@@ -34,7 +34,7 @@ const submitHandler = (e) =>{
     .then(() => {
         console.log("Document has been added successfully");
         
-        navigate('/dashboard');
+        navigate('/auth/selectTheme');
     })
     .catch(error => {
         console.log(error);

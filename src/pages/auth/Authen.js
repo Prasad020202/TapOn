@@ -4,7 +4,7 @@ import Login from "./Login";
 import Uname from "../Uname";
 import Register from "./Register";
 // import Register from "./Register";
-
+import { SelectTheme } from "./SelectTheme";
 import Pricing from './Pricing';
 
 
@@ -19,7 +19,8 @@ const components = {
   uname : Uname,
   register: Register,
   ForgotPass : ForgotPass,
-  plans:Pricing
+  plans:Pricing,
+  selectTheme: SelectTheme
 }
 
 export default function Authen() {
