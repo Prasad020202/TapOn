@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import img1 from '../../assets/img/accounts.png'
+import img2 from '../../assets/img/passwords.png'
+import img3 from '../../assets/img/Billings.png'
+
 
 const PadBox = styled.div`
   padding: 16px; /* Adjust as needed */
   /* background-color: aqua; */
   width: 20%;
+  @media (max-width: 64em) {
+    display: none;
+  }
 `;
 
 
@@ -15,9 +22,13 @@ const SideMenuItem = styled.div`
   align-items: center;
   padding: 12px 16px; /* Adjust as needed */
   border-left: 0.25rem solid transparent;
-  background: ${(props) => (props.active ? 'gainsboro' : 'transparent')};
   margin-bottom: 10px;
   cursor: pointer;
+  border-bottom: 1px solid black;
+  & img{
+    width: 20px;
+    margin-right: 5%;
+  }
   
 `;
 
@@ -33,25 +44,34 @@ const LogoWrapper = styled.div`
 function SideBar() {
   return (
     <PadBox as="nav">
+
+
+
+
+          <Link to={'/Settings/ProfileSetting'}>
       
-        <SideMenuItem active>
-          <LogoWrapper square inverse size="1rem" />
-          <Link to={'/Settings/ProfileSetting'}>Profile</Link>
-        </SideMenuItem>
-        {/* <SideMenuItem>
-          <LogoWrapper square inverse size="1rem" />
-          <Link to={'/Settings/ProfileSetting'}>Account</Link>
-        </SideMenuItem> */}
         <SideMenuItem>
-          <LogoWrapper inverse size="1rem" />
-          <Link to={'/Settings/Password'}>Password</Link>
+          {/* <LogoWrapper square inverse size="2px" /> */}
+          <img src={img1} alt=''/>
+          Profile
         </SideMenuItem>
-        
+        </Link>
+
+
+        <Link to={'/Settings/Password'}>
         <SideMenuItem>
-          <LogoWrapper inverse size="1rem" />
-          <Link to={'/Settings/Billing'}>Billing</Link>
+        <img src={img2} alt=''/>
+          Password
         </SideMenuItem>
-      
+        </Link>
+
+
+        <Link to={'/Settings/Billing'}>
+        <SideMenuItem>
+        <img src={img3} alt=''/>
+          Billing
+        </SideMenuItem>
+        </Link>
     </PadBox>
   );
 }

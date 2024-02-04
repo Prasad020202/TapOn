@@ -45,11 +45,192 @@ import { getThemeColors } from '../components/Textthemes';
 import { Tilt } from "react-tilt";
 import Edittext from "../components/Edittext";
 import Button from '../components/Navbars/Button'
+import CloseButton from '../components/Navbars/CloseButton'
 
 
 
 const Section = styled.div`
+display: flex;
 margin-top: 20px;
+/* background-color: #e4e48f; */
+height:200vh;
+
+width: 100%;
+
+`
+const LeftContainer = styled.div`
+display: flex;
+flex-direction: column;
+/* margin-left: 16px ; */
+width: 60%;
+/* background-color: #4e9b81; */
+height: 100%;
+ & div#previewbutton{
+  display: none;
+  
+     }
+
+@media (max-width: 64em){
+     width: 100%;
+     height: 100%;
+     & div#divmodwid{
+      width: 90%;
+
+
+     }
+     & div#previewbutton{
+      display: block;
+      align-items: baseline;
+      position: fixed;
+      bottom: 1%;
+
+
+     }
+     
+     
+  
+
+
+}
+
+`
+
+const LeftContent =styled.div`
+/* background-color: antiquewhite; */
+display: flex;
+flex-direction: column;
+& div#Previewcontainer{
+      display: none;
+     }
+@media (max-width: 64em){
+     width: 100%;
+     height: 100%;
+     margin-left: 0;
+     align-items: center;
+     & form{
+
+      width: 90%;
+     }
+     & div#Previewcontainer{
+      display: block;
+      display: flex;
+     }
+
+     
+  
+
+
+}
+
+  
+
+
+
+`
+
+
+const ServiceCardsContainer = styled.div`
+display: flex;
+flex-direction: column;
+margin-top: 2%;
+/* background-color: aquamarine; */
+width:75%;
+height: fit-content;
+padding: 10px;
+margin-bottom: 2%;
+
+@media (max-width: 64em){
+     width: 100%;
+     }
+`
+
+
+const ServiceCard = styled.div`
+display: flex;
+flex-direction: column;
+margin-top: 1%;
+
+/* background-color: #89e6c7ea; */
+border-radius: 10px;
+
+height: 20vh;
+padding: 8px;
+  
+
+`
+const ServicecardContent=styled.div`
+display: flex;
+flex-direction: row;
+width: fit-content;
+height: 15vh;
+
+/* background-color: blue; */
+  
+
+`
+const PServicecardContent=styled.div`
+display: flex;
+flex-direction: row;
+width: fit-content;
+height: 100%;
+
+/* background-color: blue; */
+  
+
+`
+
+const PServicecardContentsec=styled.div`
+display: flex;
+flex-direction: row;
+width: fit-content;
+height: 100%;
+
+/* background-color: blue; */
+  
+
+`
+const ButtonContainter=styled.div`
+padding: 0.5%;
+display: flex;
+height: 5vh;
+/* background-color: #3c2929; */
+
+justify-content: flex-end;
+
+
+
+`
+
+
+
+
+const LinkCard = styled.div`
+overflow: hidden;
+width: 95%;
+margin-left: 3%;
+@media (max-width: 64em){
+  
+  justify-content: center;
+  & div#div1{
+    display: none;
+    
+  }
+ 
+     
+
+
+}
+
+
+`
+
+
+  
+
+
+
+
+
   
 
 
@@ -58,6 +239,34 @@ margin-top: 20px;
 
 
 
+const RightContainer = styled.div`
+  
+  display: flex;
+  justify-content: center;
+  width: 40%;
+
+  /* background-color: blanchedalmond; */
+ 
+
+  @media (max-width: 64em){
+     display: none;
+  
+
+
+}
+
+`
+
+const MiddleMargin = styled.div`
+@media (max-width: 64em){
+     display: none;
+  
+
+
+}
+  
+
+  
 `
 
 
@@ -95,15 +304,54 @@ const Phoneborder = styled.div`
   
 `;
 
-
-
-
 const Phonecontainer = styled.div`
+margin-top: 20px;
+/* background-color: black; */
+height: fit-content;
+position: fixed;
+ 
+`;
+
+
+
+
+const PhoneContentcontainer = styled.div`
   display: flex;
   flex-direction: column;
   height: fit-content;
   align-items: center;
   color: ${props => props.theme.textTemp};
+  & div#imagediv{
+    width: 48px;
+    height: 48px;
+    background-color: black;
+    border-radius: 100%;
+      
+
+
+    }
+
+
+
+   @media (max-width: 64em){
+    display: flex;
+    padding: 2%;
+    align-items: center;
+
+    &div#imagediv{
+      width: 24px;
+      height: 12px;
+      
+
+
+    }
+    
+    
+     
+  
+
+
+}
   
 
   
@@ -122,6 +370,57 @@ const Phonecontainer = styled.div`
     
   }
 `;
+
+
+
+
+const PhoneContentcontainerpreview = styled.div`
+
+   @media (max-width: 64em){
+    display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  color: ${props => props.theme.textTemp};
+    display: flex;
+    padding: 2%;
+    align-items: center;
+
+    & div#imagediv2{
+      width: 48px;
+      height: 48px;
+      
+
+
+    }
+    
+    
+     
+  
+
+
+}
+  
+
+  
+
+
+  
+
+  & > .rounded-full {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  & > h1,
+  & > h2 {
+    margin-top: 10px;
+    
+  }
+`;
+
+
+
 
 const Infocontainer = styled.div`
   display: flex;
@@ -150,7 +449,33 @@ const Infocontainer = styled.div`
       
     }
   }
+  @media (max-width: 64em){
+     & > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+    font-size: smaller;
+
+    & img {
+      margin-right: 8px;
+      height: 1em;
+      
+    }
+  }
+  
+
+
+}
+
+
 `;
+const ServiceContent = styled.div`
+
+  
+
+
+`
 
 const Linkcontainer = styled.div`
   display: flex;
@@ -172,6 +497,28 @@ const Linkcontainer = styled.div`
   & a:last-child {
     margin-right: 0;
   }
+@media (max-width: 64em){
+  & a {
+    margin-right: 10px;
+    /* border-radius: 50%; */
+    overflow: hidden;
+  }
+
+  & a img {
+    width: 20px; 
+    height: 20px;
+    object-fit: cover; 
+  }
+
+  & a:last-child {
+    margin-right: 0;
+  }
+     
+
+    
+  }
+
+  
 `;
 
 const Cardbottoncontainer = styled.div`
@@ -199,6 +546,29 @@ const Cardbottoncontainer = styled.div`
       margin-right: 10px;
     }
   }
+  @media (max-width: 64em){
+    & > div#services {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    /* margin-right: 5px;
+    margin-left: 5px; */
+    width: 8em;
+    height: 3em;
+    background-color: #8e4b4b;
+    border-radius: 10px;
+    
+    
+
+    & img {
+      width: 15px;
+      height: 15px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+  }
+
+  }
 `;
 
 const BottomText = styled.div`
@@ -211,24 +581,259 @@ const BottomText = styled.div`
 
 
 const Servicescontainer = styled.div`
-font-size: small;
-margin-top: 20px;
+display: flex;
+flex-direction: column;
+
+margin-top: 10px;
 margin-bottom: 2px;
+/* background-color: aquamarine; */
+width: 90%;
+height: fit-content;
+
+font-size: large;
+
+
   
 
 `
 const Card = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 1%;
+  margin-bottom: 5px;
+  
+
   border-radius: 8px;
-  background-color: aliceblue;
+  /* background-color: #63a6df; */
+  
+ 
+  height: 8vh;
 
   /* Add any additional styles for your cards here */
 `;
+
+
+
+
+
+
+
+const PhonecontainerPreview = styled.div`
+ display: none;
+
+ @media (max-width: 64em){
+  background-color: aliceblue;
+  display: block;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-bottom: 10%;
+     
+     
+  
+
+
+}
+  
+
+
+
+`
+
+
+const PhoneborderPreview = styled.div`
+
+  border-width: 8px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 8px; 
+  
+  
+  
+  
+  overflow: hidden;
+  overflow-y: scroll;
+
+
+
+  @media (max-width: 64em){
+    background-color: aqua;
+    
+    display: flex;
+     width: 250px;
+     height: 450px;
+     
+     overflow: hidden;
+    overflow-y: scroll;
+     
+    
+    justify-content: center;
+    
+     
+  
+
+
+
+     
+     
+  
+
+
+}
+  
+  
+
+
+
+   /* Customizing the scrollbar */
+   &::-webkit-scrollbar {
+    width: 0.5px; /* Adjust the width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #484848; /* Color of the thumb */
+    border-radius: 6px; /* Radius of the thumb */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the track */
+  }
+  
+`;
+
+
+const Uploadedpic = styled.div`
+box-shadow: 1px 1px black ;
+background-color: beige;
+display: flex;
+width: 17%;
+height: 100%;
+border-radius: 100%;
+border: solid 2px black;
+align-self: center;
+@media (max-width: 64em){
+     width: 18%;
+     height: 80%;
+     }
+
+
+
+
+`
+
+const PUploadedpic = styled.div`
+
+background-color: beige;
+display: flex;
+width: 17%;
+height: 90%;
+border-radius: 100%;
+border: solid 2px black;
+align-self: center;
+/* @media (max-width: 64em){
+     width: 18%;
+     height: 80%;
+     } */
+
+
+
+
+`
+const Descriptionleft = styled.div`
+box-shadow: 1px 1px black ;
+width: 83%;
+display: flex;
+border-radius: 20px;
+margin-left: 2%;
+border: solid 1px black;
+align-items: center;
+font-weight: 500;
+font-style: italic;
+
+height: 100%;
+padding: 2%;
+text-align: justify;
+overflow: hidden;
+font-size: 14px;
+background-color: #7f73ff5f;
+@media (max-width: 64em){
+     width: 82%;
+     height: 100%;
+     font-size: 12px;
+     overflow: hidden;
+     overflow-y:scroll;
+
+      /* Customizing the scrollbar */
+   &::-webkit-scrollbar {
+    width: 2px; 
+    /* Adjust the width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #484848; /* Color of the thumb */
+    border-radius: 5px;
+   /* Radius of the thumb */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the track */
+  }
+     }
+
+
+
+
+
+`
+const PDescriptionleft = styled.div`
+width: 83%;
+display: flex;
+border-radius: 5px;
+margin-left: 2%;
+border: solid 1px black;
+align-items: center;
+font-weight: 500;
+font-style: italic;
+
+height: 100%;
+padding: 2%;
+text-align: justify;
+overflow: hidden;
+font-size: 7px;
+background-color: #7f73ff5f;
+/* @media (max-width: 64em){
+     width: 82%;
+     height: 100%;
+     font-size: 12px;
+     overflow: hidden;
+     overflow-y:scroll;
+
+     
+   &::-webkit-scrollbar {
+    width: 2px; 
+    
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #484848; 
+    border-radius: 5px;
+   
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; 
+  }
+     } */
+
+
+
+
+
+`
+
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -272,6 +877,9 @@ const Dashboard = () => {
   const [InputDesc, setInputDesc] = useState("");
 
   const [showModal, setShowModal] = React.useState(false);
+  const [showPreview, setShowPreview] = React.useState(false);
+  // const [serviceCards, setServiceCards] = useState([]);
+
   const [UN,setUN] = useState("");
 
   const [theme_url, setTheme_url] = useState("");
@@ -280,12 +888,7 @@ const Dashboard = () => {
 
 
 
-  // const [textColor1, setTextColor1] = useState("");
-  // const [textColor2, setTextColor2] = useState("");
-  // const [textColor3, setTextColor3] = useState("");
-  // const [textColor4, setTextColor4] = useState("");
-  // const [textColor5, setTextColor5] = useState("");
-
+  
   const [textColor, setTextColor] = useState('');
  
   
@@ -314,19 +917,11 @@ const Dashboard = () => {
 
     setTheme_Selected(themeName);
     setTheme_url(docData.data().Theme_url);
-    // setThemeColors(themeColors);
+    
   };
 
 
 
-  // const setThemeColors = (colors) => {
-  //   setTextColor1(colors.textTemp1);
-  //   setTextColor2(colors.textTemp2);
-  //   setTextColor3(colors.textTemp3);
-  //   setTextColor4(colors.textTemp4);
-  //   setTextColor5(colors.textTemp5);
-    
-  // };
 
 
 
@@ -446,7 +1041,7 @@ const Dashboard = () => {
   };
 
   const GoToMiniSite = () => {
-    navigate(`/${UN}/${userID}`)
+    navigate(`https///${UN}/${userID}`)
   }
 
   const copyToClipboard = () => {
@@ -463,6 +1058,15 @@ const Dashboard = () => {
       });
   };
 
+  const togglePreview = () => {
+    setShowPreview(!showPreview);
+  };
+
+
+  // const addServiceCard = (newServiceCard) => {
+  //   setServiceCards([...serviceCards, newServiceCard]);
+  // };
+
   
 
   return (
@@ -472,17 +1076,34 @@ const Dashboard = () => {
     <>
       <DashNav/>
 
-      <Section className="flex w-full h-auto"> {/*section*/ }
-        <div className="flex flex-col w-2/3  ml-4 ">  {/*leftcontainer*/ }
+      <Section> {/*section*/ }
+
+
+
+
+        <LeftContainer>  
+
+          
+        <LinkCard className="bg-blue-200 h-fit rounded-lg flex items-center  p-2 mb-6 justify-between">
+
+                <div id="div1"className=" ">
+                    <p className=" font-medium">Your Mini-Website is Live : 
+                        <span className="underline decoration-solid font-semibold" onClick={GoToMiniSite}>{`https//tapon/${UN}/${userID}`}
+                        </span>
+                    </p>
+
+                    
+                </div>
+                <div id="div2"className="flex  w-fit ">
+                <p className=" mt-1  mr-2">Share Your Link </p>
+                <button className="bg-white rounded-xl h-fit flex font-semibold w-fit  text-sm p-2 " onClick={copyToClipboard}>
+                    Copy Link
+                </button>
+                </div>
+            </LinkCard>
 
         
-            <div className=" bg-blue-200 h-12 rounded-lg flex items-center p-3  w-fit mt-2  ml-8"> {/*linkcontainer*/ }
-              <p >Your Live Mini-Website: <span className="underline decoration-solid font-semibold mr-14" onClick={GoToMiniSite}>{`tapon/${UN}/${userID}`}</span></p>
-              <div className="flex items-center ml-15  "> {/*inside right*/ }
-                <p >Share Your Link to Anyone</p> 
-                <button className=" bg-white rounded-xl h-8 font-semibold w-24 ml-2 " onClick={copyToClipboard}>Copy Link</button>
-              </div>
-            </div>
+            
            
 
 
@@ -494,13 +1115,21 @@ const Dashboard = () => {
 
 
             
+{/*textbox*/ }
+            <LeftContent className="  h-5/6   ml-8  "> 
 
-            <div className=" h-fit mt-12  ml-8  "> {/*textbox*/ }
+            
+
+            
+
+
+
+
             
             <h2 className=" font-bold text-xl">Details</h2>
               
 
-              <form className=" w-3/4 mt-10 mb-12">
+              <form className=" w-3/4 mt-10 mb-12 h-fit ">
 
                    <div className="relative z-0 w-full mb-5 group">
                        <input type="text" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputCname} onChange={(e) => {setInputCname(e.target.value)}}/>
@@ -547,6 +1176,85 @@ const Dashboard = () => {
               <div className="mt-5" onClick={() => setShowModal(true)}>
               <Button text ="Add Service +" /></div>
 
+              <ServiceCardsContainer>
+
+
+
+
+
+
+
+
+              {/* {serviceCards.map((serviceCard, index) => (
+          <ServiceCard key={index}>
+            <ServicecardContent>
+                
+               
+                <Uploadedpic text={serviceCard.uploadedPicData.text} />
+              <Descriptionleft text={serviceCard.descriptionLeftData.text} />
+                </ServicecardContent>
+                <ButtonContainter>
+                  
+                  <CloseButton  text="DELETE" />
+                  <CloseButton text="EDIT"  onClick={() => setShowModal(true)} />
+
+                </ButtonContainter>
+          </ServiceCard>
+        ))} */}
+
+
+
+                <ServiceCard>
+                  <ServicecardContent>
+                
+                <Uploadedpic></Uploadedpic>
+                <Descriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</Descriptionleft>
+                </ServicecardContent>
+                <ButtonContainter>
+                  
+                  <CloseButton  text="DELETE" />
+                  <CloseButton text="EDIT"  onClick={() => setShowModal(true)} />
+
+                </ButtonContainter>
+                </ServiceCard>
+                
+
+
+                {/* <ServiceCard>
+                <ServicecardContent>
+                <Uploadedpic></Uploadedpic>
+                <Descriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</Descriptionleft>
+                </ServicecardContent>
+                <ButtonContainter>
+                  
+                  <CloseButton  text="DELETE" />
+                  <CloseButton text="EDIT"  onClick={() => setShowModal(true)} />
+
+                </ButtonContainter>
+                </ServiceCard> */}
+                
+
+
+
+              </ServiceCardsContainer>
+             
+              
+
+
+
+              
+              <div id="previewbutton"className="mt-5 z-50 "onClick={togglePreview} >
+
+              <Button text ="* Preview" /></div>
+
+              
+    
+
+
+
+
+
+
 
 
 
@@ -561,12 +1269,12 @@ const Dashboard = () => {
 
               {showModal ? (
         <>
-          <div
+          <div 
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="border-0 rounded-lg shadow-lg relative w-2/5 my-6 mx-auto  ">
+            <div id="divmodwid" className="border-0 rounded-lg shadow-lg relative w-2/5 my-6 mx-auto  ">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div  className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
@@ -574,7 +1282,16 @@ const Dashboard = () => {
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => {setShowModal(false); 
+
+                      // const newServiceCardData = {
+                      //   uploadedPicData:{text: 'text'} ,
+                      //   descriptionLeftData: {text: 'This is the description text'} ,
+                      // };
+                      
+                      // addServiceCard(newServiceCardData);
+                      
+                    }}
                   >
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       x
@@ -590,7 +1307,7 @@ const Dashboard = () => {
 
 
                   <div className="relative z-0 w-full mb-5 group">
-                       <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={InputDesc} onChange={(e)=>{setInputDesc(e.target.value)}} />
+                       <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                        <label for="floating_repeat_password" className="flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Description <Edittext className="ml-1 mt-0.5"/></label>
                    </div>
                 </div>
@@ -618,6 +1335,127 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+
+
+
+
+
+
+
+
+
+{showPreview ? (
+        <>
+          
+            <div id="Previewcontainer"
+            className="justify-center  items-center flex overflow-x-hidden fixed inset-0  outline-none focus:outline-none  z-40 "
+            style={{
+              backdropFilter: 'blur(2px)',
+              backgroundColor: 'rgba(232, 232, 232, 0.8)', // Replace with your desired color and opacity
+            }}
+            >
+            
+              
+
+
+
+
+              <PhonecontainerPreview>
+
+
+
+                
+                  
+                <PhoneborderPreview style={{ overflowY: 'scroll' }}>
+
+
+
+                <PhoneContentcontainerpreview  style={{ background: `url(${theme_url}) center/cover no-repeat` }}>
+
+                      <div id="imagediv2">
+                        <img src={img1} alt="not found" />
+                      </div>
+
+                      <h1>{displayCname}</h1>
+                      <h2>{displayFullName}</h2>
+
+                      <Infocontainer>
+                        <div>
+                          <img src={phoneImg} alt="" />
+                          {displayPhoneNo}
+                        </div>
+
+                        <div>
+                          <img src={AddressImg} alt="" />
+                          {displayAddress}
+                        </div>
+
+                        <div>
+                          <img src={linkImg} alt="" />
+                          {displaylink1}
+                        </div>
+
+                        <div>
+                          <img src={mailImg} alt="" />
+                          {displayDesc}
+                        </div>
+                      </Infocontainer>
+
+                      <Linkcontainer>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                          <img src={twitterImg} alt="" />
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                          <img src={instaImg} alt="" />
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                          <img src={youtubeImg} alt="" />
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                          <img src={fbImg} alt="" />
+                        </a>
+                      </Linkcontainer>
+
+
+                      
+
+
+
+                      <Cardbottoncontainer>
+                        <div id="services">
+                          <img src={saveCardImg} alt="" />
+                          <div>Save Card</div>
+                        </div>
+
+                        <div id="services">
+                          <img src={addContactImg} alt="" />
+                          <div>Add Contact</div>
+                        </div>
+                      </Cardbottoncontainer>
+
+
+
+
+                      <BottomText>
+                        tapON
+                      </BottomText>
+
+                      </PhoneContentcontainerpreview>
+
+                
+
+
+                </PhoneborderPreview>
+                
+                </PhonecontainerPreview>
+
+              
+            
+          </div>
+          
+          {/* <div className="opacity-25 fixed inset-0 z-50 bg-black"></div> */}
         </>
       ) : null}
     
@@ -658,7 +1496,7 @@ const Dashboard = () => {
 
 
             
-            </div>
+            </LeftContent>
 
 
 
@@ -667,15 +1505,25 @@ const Dashboard = () => {
 
 
 
-        </div>
-        <div className="border-2 w-0 h-screen  ml-4"></div> {/*middlemargin*/ }
+        </LeftContainer>
+
+
+
+
+        <MiddleMargin className="border-2 w-0 h-100vh "></MiddleMargin> 
 
 
 
 
 
 
-        <div className="   flex w-2/6 justify-center"> {/*rightcontainer*/ }
+        <RightContainer> 
+
+
+
+
+
+          <Phonecontainer>
 
 
 
@@ -686,7 +1534,7 @@ const Dashboard = () => {
   
 
   
-    <Phonecontainer  style={{ background: `url(${theme_url}) center/cover no-repeat` }}>
+    <PhoneContentcontainer  style={{ background: `url(${theme_url}) center/cover no-repeat` }}>
 
       <div className="rounded-full bg-black w-24 h-24">
         <img src={img1} alt="not found" />
@@ -735,14 +1583,26 @@ const Dashboard = () => {
 
       <Servicescontainer>
         <Card>
+        <PServicecardContent>
+                
+                <PUploadedpic></PUploadedpic>
+                <PDescriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</PDescriptionleft>
+                </PServicecardContent>
 
         </Card>
-        <Card>
-          
-        </Card>
+        {/* <Card>
+        <PServicecardContentsec>
+                
+                
+                <PDescriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</PDescriptionleft>
+                <PUploadedpic></PUploadedpic>
+                </PServicecardContentsec>
+
+        </Card> */}
+        
       </Servicescontainer>
 
-      
+
 
       <Cardbottoncontainer>
         <div id="services">
@@ -763,13 +1623,14 @@ const Dashboard = () => {
         tapON
       </BottomText>
 
-    </Phonecontainer>
+    </PhoneContentcontainer>
     
 
 </Phoneborder>
 </Tilt>
+</Phonecontainer>
 
-        </div>
+        </RightContainer>
 
 
 

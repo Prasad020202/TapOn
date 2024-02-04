@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import SideBar from './SideBar';
 import ProfileSetting from './ProfilePanel';
@@ -6,11 +6,6 @@ import Nav from "../../components/Navbars/Navprof";
 import Password from './PasswordPanel';
 import Billing from './BillingPanel';
 import { Navigate, useParams } from "react-router-dom";
-
-
-
-
-
 
 const ContentArea = styled.div`
   padding: 2rem;
@@ -20,7 +15,8 @@ const ContentArea = styled.div`
 const SettingsHeader = styled.header`
   color: white;
   margin-bottom: 1rem;
-  & ,h1{
+
+  & h1 {
     font-weight: bold;
     font-size: 28px;
   }
@@ -35,49 +31,41 @@ const SettingsPane = styled.main`
 const RightPanel = styled.div`
   border-left: 1px solid lightgrey;
   padding: 1rem;
+
+  @media (max-width: 64em) {
+    border-left: none;
+  }
 `;
 
 
-
-
 const components = {
-  ProfileSetting : ProfileSetting,
-  Password : Password,
+  ProfileSetting: ProfileSetting,
+  Password: Password,
   Billing: Billing
-}
-
-
-
-
-
+};
 
 const Smain = () => {
-
-  const {id} = useParams();
-
+  const { id } = useParams();
   const ComponentToRender = components[id];
 
   return (
     <div>
-        {/* <Nav/> */}
+      {/* <Nav/> */}
       <ContentArea>
         <SettingsHeader>
           <h1>Settings</h1>
         </SettingsHeader>
         <SettingsPane>
-          <SideBar />
+         
+            <SideBar />
+          
           <RightPanel>
-            {ComponentToRender ? <ComponentToRender/> : <Navigate to="/dashboard" /> }
-            
-             {/* <ProfileSetting/> */}
-           
+            {ComponentToRender ? <ComponentToRender /> : <Navigate to="/dashboard" />}
           </RightPanel>
         </SettingsPane>
       </ContentArea>
-            
-
     </div>
-  )
-}
+  );
+};
 
-export default Smain
+export default Smain;

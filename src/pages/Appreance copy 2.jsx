@@ -17,8 +17,6 @@ import "./Appreance.css"
 import DashNav from "../components/Navbars/Navprof";
 import styled, {ThemeProvider} from "styled-components";
 import { Tilt } from "react-tilt";
-import Button from '../components/Navbars/Button'
-
 
 
 
@@ -29,15 +27,6 @@ margin-top: 20px;
 height:200vh;
 
 width: 100%;
-@media (max-width: 64em){
-     width: 100%;
-     height: 100%;
-     
-  
-
-
-}
-
 
 `
 const LeftContainer = styled.div`
@@ -50,48 +39,16 @@ width: 55%;
 align-items: center;
 & h2{
   align-self: flex-start;
-  font-weight: bold;
-  display: flex;
-  float: inline-start;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-size: 25px;
-  font-style: italic;
-  margin-left: 10%;
-
 }
-& div#Previewcontainer{
-      display: none;
-     }
-     & div#previewbutton{
-   display: none;
-  
-     }
 
 @media (max-width: 64em){
      width: 100%;
      height: 100%;
-     padding: 1%;
-
-
-     & div#Previewcontainer{
-      display: block;
-     }
-     & div#previewbutton{
-      display: block;
-      align-items: baseline;
-      position: fixed;
-      bottom: 1%;
-
-
-     }
-     
      
   
 
 
 }
-
 
 `
 
@@ -131,7 +88,7 @@ const RightContainer = styled.div`
   
   display: flex;
   justify-content: center;
-  width: 45%;
+  width: 33.3%;
 
   /* background-color: blanchedalmond; */
  
@@ -192,55 +149,6 @@ const Phoneborder = styled.div`
   
 `;
 
-
-
-const PhoneborderPreview = styled.div`
-  display: flex;
-  border-width: 8px;
-  border-style: solid;
-  border-color: black;
-  border-radius: 12px; 
-  width: 290px;
-  height: 550px;
-  margin-top:3em;
-  
-  overflow: hidden;
-  overflow-y: scroll;
-
-
-
-  @media (max-width: 64em){
-     width: 250px;
-     height: 450px;
-     margin-bottom: 50%;
-     margin-left: 15%;
-     
-     
-  
-
-
-}
-  
-  
-
-
-
-   /* Customizing the scrollbar */
-   &::-webkit-scrollbar {
-    width: 0.5px; /* Adjust the width of the scrollbar */
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #484848; /* Color of the thumb */
-    border-radius: 6px; /* Radius of the thumb */
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent; /* Color of the track */
-  }
-  
-`;
-
 const Phonecontainer = styled.div`
 margin-top: 20px;
 /* background-color: black; */
@@ -255,10 +163,9 @@ position: fixed;
 const PhoneContentcontainer = styled.div`
   display: flex;
   flex-direction: column;
-  height:100%;
+  height: fit-content;
   align-items: center;
   color: ${props => props.theme.textTemp};
-  width: 100%;
   
 
   
@@ -388,13 +295,13 @@ const Card = styled.div`
   const ThemeCard = styled.div`
   display: flex;
   
-  width: 35%;
+  width: 40%;
   text-align: center;
-  margin-left: 4%;
-  margin-right: 4%;
+  margin-left: 2%;
+  margin-right: 2%;
   margin-bottom: 4%;
   justify-content: space-between;
-  
+
    @media (max-width: 64em){
    width: 60%;
   display: flex;
@@ -409,7 +316,6 @@ const Card = styled.div`
   
   `
   const ThemeContainer = styled.div`
-  width: 80%;
    @media (max-width: 64em){
    width: 80%;
   
@@ -423,20 +329,6 @@ const Card = styled.div`
 
 
   `
-
-const PhonecontainerPreview = styled.div`
-@media (max-width: 64em){
-   /* background-color: aqua; */
-   height: fit-content;
-   
-  
-  
-}
-  
-
-
-
-`
 
 
 
@@ -467,7 +359,6 @@ const Appreance = () => {
   const [UserID, setUserID] = useState("");
   const [uploadTheme, setuploadTheme] = useState("");
   const [theme_url, setTheme_url] = useState("");
-  const [showPreview, setShowPreview] = React.useState(false);
 
 
   
@@ -526,10 +417,6 @@ const Appreance = () => {
 
   };
 
-  const togglePreview = () => {
-    setShowPreview(!showPreview);
-  };
-
 
 
 
@@ -559,11 +446,9 @@ const Appreance = () => {
 
 
 
+    <h2 className=" font-bold text-3xl flex float-start mt-3 mb-5">Select Themes!</h2>
 
-
-    <h2 >Select Themes!</h2>
-
-    <ThemeContainer className="flex flex-wrap justify-center shadow-xl p-10 bg-gray-300 rounded-xl  ">
+    <ThemeContainer className="flex flex-wrap justify-center shadow-xl p-10 bg-gray-300 rounded-xl w-7/12 ">
  
           <ThemeCard>
           <div
@@ -631,59 +516,6 @@ const Appreance = () => {
 
 
           </ThemeContainer>
-          <div id="previewbutton"className="mt-5 z-50 "  onClick={togglePreview} >
-
-            
-
-              <Button text ="* Preview" /></div>
-
-
-
-
-
-
-
-
-
-
-              {showPreview ? (
-        <>
-          <div id="Previewcontainer"
-            className="justify-center items-center flex overflow-x-hidden fixed inset-0  outline-none focus:outline-none  "
-          >
-            
-              
-
-
-
-
-              <PhonecontainerPreview>
-
-
-
-                
-                  
-                <PhoneborderPreview>
-
-                <PhoneContentcontainer  style={{ background: `url(${theme_url}) center/cover no-repeat` }}>
-
-                </PhoneContentcontainer>
-
-
-                </PhoneborderPreview>
-                
-                </PhonecontainerPreview>
-
-              
-            
-          </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
-
-
-
-
 
 
         
@@ -753,9 +585,9 @@ const Appreance = () => {
   
     <PhoneContentcontainer  style={{ background: `url(${theme_url}) center/cover no-repeat` }}>
 
-      {/* <div className="rounded-full bg-black w-24 h-24">
+      <div className="rounded-full bg-black w-24 h-24">
         <img src={img1} alt="not found" />
-      </div> */}
+      </div>
 
       {/* <h1>{displayCname}</h1> */}
       {/* <h2>{displayFullName}</h2> */}
@@ -834,9 +666,6 @@ const Appreance = () => {
 </Phoneborder>
 </Tilt>
 </Phonecontainer>
-
-
-
 </RightContainer>
 
 
