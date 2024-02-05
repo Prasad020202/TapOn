@@ -1723,41 +1723,52 @@ const Dashboard = () => {
       <h2>{displayFullName}</h2>
 
       <Infocontainer>
-        <div>
-          <img src={phoneImg} alt="" />
-          {displayPhoneNo}
-        </div>
+  {displayPhoneNo && (
+    <div>
+      <img src={phoneImg} alt="" />
+      {displayPhoneNo}
+    </div>
+  )}
 
-        <div>
-          <img src={AddressImg} alt="" />
-          {displayAddress}
-        </div>
+  {displayAddress && (
+    <div>
+      <img src={AddressImg} alt="" />
+      {displayAddress}
+    </div>
+  )}
 
-        <div>
-          <img src={linkImg} alt="" />
-          {displaylink1}
-        </div>
+  {displaylink1 && (
+    <div>
+      <img src={linkImg} alt="" />
+      {displaylink1}
+    </div>
+  )}
 
-        <div>
-          <img src={mailImg} alt="" />
-          {displayDesc}
-        </div>
-      </Infocontainer>
+  {displayDesc && (
+    <div>
+      <img src={mailImg} alt="" />
+      {displayDesc}
+    </div>
+  )}
+</Infocontainer>
+
 
       <Linkcontainer>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+      {displayInsta_Link && (
+        <a href={displayInsta_Link} target="_blank" rel="noopener noreferrer">
           <img src={twitterImg} alt="" />
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        </a>)}
+
+        {displayX_Link && (
+        <a href={displayX_Link} target="_blank" rel="noopener noreferrer">
           <img src={instaImg} alt="" />
-        </a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-          <img src={youtubeImg} alt="" />
-        </a>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        </a>)}
+        {displayFacebook_Link && (
+        <a href={displayFacebook_Link} target="_blank" rel="noopener noreferrer">
           <img src={fbImg} alt="" />
-        </a>
+        </a>)}
       </Linkcontainer>
+      
 
 
       <Servicescontainer>
