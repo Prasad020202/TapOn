@@ -128,16 +128,58 @@ flex-direction: column;
 
 `
 
+const Cardcontent=styled.div`
+
+font-size: 16px;
+font-weight: 500;
+
+
+color: white;
+font-style: italic;
+
+
+  
+
+
+
+`
+
+const Servicecards =styled.div`
+display: flex;
+width: fit-content;
+min-width: 15vh;
+min-height: 7vh;
+height: fit-content;
+background-color: #000000;
+box-shadow: 1px  1px  black;
+
+border-radius: 20px;
+padding: 2%;
+align-items: center;
+justify-content: center;
+margin-top: 2%;
+margin-bottom: 2%;
+border: solid 3px #c3cbdc;
+
+
+
+
+
+
+`
+
 
 const ServiceCardsContainer = styled.div`
 display: flex;
-flex-direction: column;
+flex-wrap: wrap;
 margin-top: 2%;
-/* background-color: aquamarine; */
-width:75%;
+/* background-color: aquamarine;  */
+width:65%;
 height: fit-content;
 padding: 10px;
 margin-bottom: 2%;
+align-items: center;
+justify-content: space-between;
 
 @media (max-width: 64em){
      width: 100%;
@@ -578,19 +620,36 @@ const BottomText = styled.div`
   height: 8vh; 
   margin-top: auto; 
 `;
+const CardcontainerP=styled.div`
+border: solid 2px black;
+margin-bottom: 2%;
+margin-top: 2%;
+font-weight: 500;
+font-style: italic;
+align-items: center;
+justify-content: center;
+display: flex;
+min-width: 12vh;
+min-height: 8vh;
+background-color: #adadad;
+border-radius: 8px;
+  
 
+
+`
 
 const Servicescontainer = styled.div`
+justify-content: space-between;
+
 display: flex;
-flex-direction: column;
+flex-wrap: wrap;
 
 margin-top: 10px;
 margin-bottom: 2px;
 /* background-color: aquamarine; */
-width: 90%;
+width: 75%;
 height: fit-content;
-
-font-size: large;
+padding: 1%;
 
 
   
@@ -879,6 +938,8 @@ const Dashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [showPreview, setShowPreview] = React.useState(false);
   // const [serviceCards, setServiceCards] = useState([]);
+  const [showServiceModal, setShowServiceModal] = React.useState(false);
+
 
   const [UN,setUN] = useState("");
 
@@ -1041,11 +1102,11 @@ const Dashboard = () => {
   };
 
   const GoToMiniSite = () => {
-    navigate(`https///${UN}/${userID}`)
+    navigate(`/${UN}/${userID}`)
   }
 
   const copyToClipboard = () => {
-    const textToCopy = `tapon/${UN}/${userID}`;
+    const textToCopy = `https://tapon/${UN}/${userID}`;
 
     // Using navigator.clipboard.writeText() for modern browsers
 
@@ -1088,7 +1149,7 @@ const Dashboard = () => {
 
                 <div id="div1"className=" ">
                     <p className=" font-medium">Your Mini-Website is Live : 
-                        <span className="underline decoration-solid font-semibold" onClick={GoToMiniSite}>{`https//tapon/${UN}/${userID}`}
+                        <span className="underline decoration-solid font-semibold" onClick={GoToMiniSite}>{`https://tapon/${UN}/${userID}`}
                         </span>
                     </p>
 
@@ -1177,61 +1238,62 @@ const Dashboard = () => {
               <Button text ="Add Service +" /></div>
 
               <ServiceCardsContainer>
+              <Tilt className="Tilt"  options={{ max: 40, perspective: 1000, easing: 'cubic-bezier(.03,.98,.52,.99)', scale: 1.05}}>
 
+                <Servicecards onClick={() => setShowServiceModal(true)}>
 
-
-
-
-
-
-
-              {/* {serviceCards.map((serviceCard, index) => (
-          <ServiceCard key={index}>
-            <ServicecardContent>
-                
-               
-                <Uploadedpic text={serviceCard.uploadedPicData.text} />
-              <Descriptionleft text={serviceCard.descriptionLeftData.text} />
-                </ServicecardContent>
-                <ButtonContainter>
+                  <Cardcontent>Salon</Cardcontent>
                   
-                  <CloseButton  text="DELETE" />
-                  <CloseButton text="EDIT"  onClick={() => setShowModal(true)} />
 
-                </ButtonContainter>
-          </ServiceCard>
-        ))} */}
+                </Servicecards></Tilt>
 
 
 
-                <ServiceCard>
-                  <ServicecardContent>
-                
-                <Uploadedpic></Uploadedpic>
-                <Descriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</Descriptionleft>
-                </ServicecardContent>
-                <ButtonContainter>
+                <Tilt className="Tilt"  options={{ max: 40, perspective: 1000, easing: 'cubic-bezier(.03,.98,.52,.99)', scale: 1.05}}>
+
+                <Servicecards onClick={() => setShowServiceModal(true)}>
+
+                  <Cardcontent>Salon</Cardcontent>
                   
-                  <CloseButton  text="DELETE" />
-                  <CloseButton text="EDIT"  onClick={() => setShowModal(true)} />
 
-                </ButtonContainter>
-                </ServiceCard>
+                </Servicecards></Tilt>
+
+
+
+                <Tilt className="Tilt"  options={{ max: 40, perspective: 1000, easing: 'cubic-bezier(.03,.98,.52,.99)', scale: 1.05}}>
+
+                <Servicecards onClick={() => setShowServiceModal(true)}>
+
+                  <Cardcontent>Salon</Cardcontent>
+                  
+
+                </Servicecards></Tilt>
+
+
+
+
+                <Tilt className="Tilt"  options={{ max: 40, perspective: 1000, easing: 'cubic-bezier(.03,.98,.52,.99)', scale: 1.05}}>
+
+                <Servicecards onClick={() => setShowServiceModal(true)}>
+
+                  <Cardcontent>Salon</Cardcontent>
+                  
+
+                </Servicecards></Tilt>
+                
                 
 
 
-                {/* <ServiceCard>
-                <ServicecardContent>
-                <Uploadedpic></Uploadedpic>
-                <Descriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</Descriptionleft>
-                </ServicecardContent>
-                <ButtonContainter>
-                  
-                  <CloseButton  text="DELETE" />
-                  <CloseButton text="EDIT"  onClick={() => setShowModal(true)} />
 
-                </ButtonContainter>
-                </ServiceCard> */}
+
+
+
+
+
+
+
+
+             
                 
 
 
@@ -1303,7 +1365,7 @@ const Dashboard = () => {
 
                 {/*body*/}
                 <div className="relative p-6 flex flex-row h-full">
-                  <div className=" flex items-center w-20 h-15  bg-black mr-10 rounded-lg text-white font-light text-xs  justify-center cursor-pointer ">Add Image</div>
+                  
 
 
                   <div className="relative z-0 w-full mb-5 group">
@@ -1327,6 +1389,85 @@ const Dashboard = () => {
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+
+
+
+
+
+
+
+
+
+{showServiceModal ? (
+        <>
+          <div 
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div id="divmodwid" className="border-0 rounded-lg shadow-lg relative w-2/5 my-6 mx-auto  ">
+              {/*content*/}
+              <div  className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                  <h3 className="text-3xl font-semibold">
+                    Add Service Details
+                  </h3>
+                  <button
+                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => {setShowServiceModal(false); 
+
+                      // const newServiceCardData = {
+                      //   uploadedPicData:{text: 'text'} ,
+                      //   descriptionLeftData: {text: 'This is the description text'} ,
+                      // };
+                      
+                      // addServiceCard(newServiceCardData);
+                      
+                    }}
+                  >
+                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                      x
+                    </span>
+                  </button>
+                </div>
+
+
+
+                {/*body*/}
+                <div className="relative p-6 flex flex-row h-full">
+                  
+
+
+                  <div className="relative z-0 w-full mb-5 group">
+                       <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                       <label for="floating_repeat_password" className="flex peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" >Name <Edittext className="ml-1 mt-0.5"/></label>
+                   </div>
+                </div>
+
+
+
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowServiceModal(false)}
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowServiceModal(false)}
                   >
                     Save Changes
                   </button>
@@ -1582,23 +1723,11 @@ const Dashboard = () => {
 
 
       <Servicescontainer>
-        <Card>
-        <PServicecardContent>
-                
-                <PUploadedpic></PUploadedpic>
-                <PDescriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</PDescriptionleft>
-                </PServicecardContent>
-
-        </Card>
-        {/* <Card>
-        <PServicecardContentsec>
-                
-                
-                <PDescriptionleft>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, earum quae ex dolores enim a voluptatibus ad. Aut eos doloremque ab omnis ex. Explicabo alias ut tempora cupiditate dicta.</PDescriptionleft>
-                <PUploadedpic></PUploadedpic>
-                </PServicecardContentsec>
-
-        </Card> */}
+        <CardcontainerP>salon</CardcontainerP>
+        <CardcontainerP>salon</CardcontainerP>
+        <CardcontainerP>salon</CardcontainerP>
+        <CardcontainerP>salon</CardcontainerP>
+        <CardcontainerP>salon</CardcontainerP>
         
       </Servicescontainer>
 
