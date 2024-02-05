@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Uname from "../Uname";
 import { useParams } from "react-router-dom";
+import Login from "./Login";
 
 import { useState } from 'react';
 import { createUserWithEmailAndPassword , getAdditionalUserInfo, signInWithPopup, updateProfile} from "firebase/auth";
@@ -14,6 +15,10 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
+const components = {
+  Login : Login,
+ 
+}
 
 export default function Register() {
   const {id} = useParams();
@@ -133,6 +138,14 @@ console.log(error);
   });
     }
 
+
+   
+    
+    
+      
+    
+      
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -227,6 +240,23 @@ console.log(error);
                         >
                           Privacy Policy
                         </a>
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className=" text-xs">
+                    <label className="inline-flex items-center cursor-pointer">
+                      <span className="ml-2 text-sm font-semibold text-blueGray-600">
+                        Already have an account?{" "}
+                        
+                        <span
+                          href="#pablo"
+                          className="text-lightBlue-500"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          Login
+                        </span>
+                        
                       </span>
                     </label>
                   </div>

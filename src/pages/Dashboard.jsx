@@ -46,6 +46,7 @@ import { Tilt } from "react-tilt";
 import Edittext from "../components/Edittext";
 import Button from '../components/Navbars/Button'
 import CloseButton from '../components/Navbars/CloseButton'
+import Copied from '../components/Copied'
 
 
 
@@ -207,9 +208,10 @@ justify-content: flex-end;
 
 
 const LinkCard = styled.div`
-overflow: hidden;
+/* overflow: hidden; */
 width: 95%;
 margin-left: 3%;
+
 @media (max-width: 64em){
   
   justify-content: center;
@@ -217,6 +219,7 @@ margin-left: 3%;
     display: none;
     
   }
+ 
  
      
 
@@ -1159,7 +1162,7 @@ const Dashboard = () => {
 
     navigator.clipboard.writeText(textToCopy)
       .then(() => {
-        alert('Text successfully copied to clipboard');
+        
       })
       .catch((err) => {
         console.error('Unable to copy text to clipboard', err);
@@ -1202,11 +1205,10 @@ const Dashboard = () => {
 
                     
                 </div>
-                <div id="div2"className="flex  w-fit ">
-                <p className=" mt-1  mr-2">Share Your Link </p>
-                <button className="bg-white rounded-xl h-fit flex font-semibold w-fit  text-sm p-2 " onClick={copyToClipboard}>
-                    Copy Link
-                </button>
+                <div id="div2"className="flex flex-row  w-fit  ">
+                <p className=" mt-2  mr-2">Share Your Link </p>
+                
+                <Copied/>
                 </div>
             </LinkCard>
 
