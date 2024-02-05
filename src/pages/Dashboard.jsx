@@ -383,9 +383,10 @@ const PhoneContentcontainerpreview = styled.div`
   flex-direction: column;
   
   align-items: center;
+  
   color: ${props => props.theme.textTemp};
     display: flex;
-    padding: 2%;
+    padding: 4%;
     align-items: center;
 
     & div#imagediv2{
@@ -419,6 +420,43 @@ const PhoneContentcontainerpreview = styled.div`
     margin-top: 10px;
     
   }
+`;
+
+
+
+const Infocontainerpre = styled.div`
+ 
+
+  
+  @media (max-width: 64em){
+     display: flex;
+     
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+  /* background-color: beige; */
+  font-style: italic;
+  font-weight: bold;
+  overflow: hidden;
+     & > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+    font-size: 10px;
+
+    & img {
+      margin-right: 8px;
+      height: 1em;
+      
+    }
+  }
+  
+
+
+}
+
+
 `;
 
 
@@ -549,10 +587,14 @@ const Cardbottoncontainer = styled.div`
     }
   }
   @media (max-width: 64em){
+    /* background-color: #efefef; */
+    width: 90%;
+    padding: 2%;
     & > div#services {
+      padding: 2%;
     display: flex;
     align-items: center;
-    font-size: 12px;
+    /* font-size: 10px; */
     /* margin-right: 5px;
     margin-left: 5px; */
     width: 8em;
@@ -583,7 +625,8 @@ const BottomText = styled.div`
 
 
 const Servicescontainer = styled.div`
-justify-content: space-between;
+/* justify-content: space-between; */
+justify-content: center;
 
 display: flex;
 flex-wrap: wrap;
@@ -593,7 +636,7 @@ margin-bottom: 2px;
 /* background-color: aquamarine; */
 width: 75%;
 height: fit-content;
-padding: 1%;
+padding: 2%;
 
 
   
@@ -609,7 +652,7 @@ font-style: italic;
 align-items: center;
 justify-content: center;
 display: flex;
-min-width: 12vh;
+min-width: 20vh;
 min-height: 8vh;
 background-color: #adadad;
 border-radius: 8px;
@@ -648,10 +691,10 @@ const PhonecontainerPreview = styled.div`
   background-color: aliceblue;
   display: block;
   display: flex;
-    align-items: center;
+    /* align-items: center;
     justify-content: center;
     height: fit-content;
-    margin-bottom: 10%;
+    margin-bottom: 10%; */
      
      
   
@@ -682,6 +725,7 @@ const PhoneborderPreview = styled.div`
 
   @media (max-width: 64em){
     background-color: aqua;
+    
     
     display: flex;
      width: 250px;
@@ -1475,6 +1519,10 @@ const Dashboard = () => {
 
 
 
+
+
+
+
 {showPreview ? (
         <>
           
@@ -1510,7 +1558,7 @@ const Dashboard = () => {
                       <h1>{displayCname}</h1>
                       <h2>{displayFullName}</h2>
 
-                      <Infocontainer>
+                      <Infocontainerpre>
                         <div>
                           <img src={phoneImg} alt="" />
                           {displayPhoneNo}
@@ -1530,7 +1578,7 @@ const Dashboard = () => {
                           <img src={mailImg} alt="" />
                           {displayDesc}
                         </div>
-                      </Infocontainer>
+                      </Infocontainerpre>
 
                       <Linkcontainer>
                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">

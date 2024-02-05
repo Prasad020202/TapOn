@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 const LogoText =styled.h1`
+cursor: pointer;
 
 
   font-family: 'Akaya Telivigala', cursive;
@@ -25,7 +26,7 @@ const Logo = () => {
   return (
     <LogoText>
 
-        <Link to='/'>Tapon</Link>
+        Tapon
     </LogoText>
   )
 }
