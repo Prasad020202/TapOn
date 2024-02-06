@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth, db, imageDb } from "./auth/firebase";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 import img1 from "../assets/img/gamer.png"
 import img2 from "../assets/img/Theme2.jpg"
@@ -37,8 +37,6 @@ width: 100%;
 
 
 }
-
-
 `
 const LeftContainer = styled.div`
 display: flex;
@@ -469,22 +467,47 @@ const Appreance = () => {
   const [theme_url, setTheme_url] = useState("");
   const [showPreview, setShowPreview] = React.useState(false);
 
+  const [displayPhoto, setDisplayPhoto] = useState("");
 
-  
 
 
+  const[updateProfile, setUpdateProfile] = useState("")
+
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+
+  const [forceUpdate, setForceUpdate] = useState(false);
 
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUserID(user.uid);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+       if (user) {
+         console.log('User object:', user);
+         setUserID(user.uid);
+         // Call getData with the user ID directly
+         getData(user.uid);
+         setThemes(user.uid);
+       } else {
+         console.log('No user is signed in.');
+       }
     });
-    
-    setThemes();
-  });
+   
+    // Clean up subscription on unmount
+    return () => unsubscribe();
+   }, []);
+
+   const getData = async (userId) => {
+    if (!userId) {
+       console.log('User ID is not set.');
+       return;
+    }
+   
+    const docRef = doc(db, "UserInfo", userId);
+    const docData = await getDoc(docRef);
+    setDisplayPhoto(docData.data().Profile_URl);
+   };
   
 
-  const setThemes = async () => {
+   const setThemes = async (UserID) => {
     const docRef = doc(db, "UserInfo", UserID);
 
     const docData = await getDoc(docRef);
@@ -532,14 +555,62 @@ const Appreance = () => {
 
 
 
+  const deleteProfile = async() =>{
+    const desertRef = ref(imageDb, `files/${UserID}`);
+   
+    deleteObject(desertRef).then(async() => {
+   
+       alert("Deleted!");
+       setDisplayPhoto(null); 
+      //  setForceUpdate(!forceUpdate); // Force a re-render
+      setDisplayPhoto(`${desertRef}?${Date.now()}`); // Append a timestamp to the image URL
+   
+    }).catch((error) => {
+       console.log("Profile is not deleting");
+    });
+   }
 
 
+  const EditProfile = async(e) =>{
+    const imgRef = ref(imageDb, `files/${UserID}`);
+    const uploadTask = uploadBytesResumable(imgRef, updateProfile);
 
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      // Progress handling (e.g., update a progress bar)
+    },
+    (error) => {
+      // Error handling
+      console.error(error);
+      // Alert the user about the error
+    },
+    async () => {
+      const downloadURL = await getDownloadURL(imgRef);
+      // setImageURL(downloadURL);
 
+      // Update Firestore with download URL
+      const userRef = doc(collection(db, "UserInfo"), UserID);
+      await updateDoc(userRef, { Profile_URl: downloadURL });
 
+      console.log("Document updated with download URL:", downloadURL);
+      // Alert the user about successful upload and update
 
-
+      // setDisplayProfile(downloadURL)
+      setDisplayPhoto(downloadURL);
+      console.log("image is uploaded");
+      setIsUploadModalOpen(false);
+    }
+    
+  );
   
+  }
+
+  const uploadProfile = (e) =>{
+    e.preventDefault();
+    EditProfile();
+    setIsUploadModalOpen(false); 
+  }
 
 
 
@@ -550,6 +621,7 @@ const Appreance = () => {
     <DashNav/>
 
 
+
     {/* section */}
      
 
@@ -557,7 +629,41 @@ const Appreance = () => {
 
     <LeftContainer>
 
+    {isUploadModalOpen && (
+          <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-black opacity-75">
+            <div className="bg-white p-4 rounded-lg shadow-lg py-14 px-10">
+              <div className="grid grid-rows-2 gap-10">
+                <input type="file" placeholder="Upload Your Profile Pic" onChange={(e) => setUpdateProfile(e.target.files[0])} />
+                
+                <div className="grid grid-cols-2 gap-10">
+                  <button onClick={uploadProfile} className="bg-black text-white p-5 rounded-lg font-semibold">Upload Profile Picture</button>
+                  <button onClick={() => setIsUploadModalOpen(false)} className="border-4 border-black rounded-lg font-bold">Cancel</button>
+                </div>
 
+              </div>
+      
+            </div>
+          </div>
+      )}
+
+<div className="grid grid-rows-1">
+          <div className=" h-96 ">
+            <p className="text-3xl font-semibold">Profile</p>
+            <div className="grid grid-cols-2 bg-gray-400 h-60 rounded-lg p-10 m-5">
+              <div className="rounded-full bg-slate-200 w-40">
+                <img src={displayPhoto} key={displayPhoto} alt="not found" className="rounded-full w-40 h-40"/>
+              </div>
+
+              <div className="grid grid-rows-2 text-center">
+                <div className=" bg-black text-white rounded-xl pt-3 w-64 h-14" id="Upload Profile" onClick={() => setIsUploadModalOpen(true)}>Upload Profile</div>
+                <div className=" bg-white text-black rounded-xl pt-3 w-64 h-14" onClick={deleteProfile}>Remove Profile</div>
+
+                {/* <input type="file"  placeholder='Update Profile Photo'  onChange={(e)=>{setUpdateProfile(e.target.files[0])}}/>
+            <button onClick={EditProfile}>Update</button> */}
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -636,15 +742,6 @@ const Appreance = () => {
             
 
               <Button text ="* Preview" /></div>
-
-
-
-
-
-
-
-
-
 
               {showPreview ? (
         <>

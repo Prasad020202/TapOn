@@ -1,10 +1,21 @@
 import React from "react";
+import styled from "styled-components";
+const Above = styled.div`
+ @media (max-width: 64em) {
+  & polygon{
+    display: none;
+  }
+ }
+
+
+
+`
 
 export default function Bigf() {
   return (
     <>
       <footer className="relative bg-blueGray-200 pt-8 pb-6">
-        <div
+        <Above
           className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
           style={{ transform: "translateZ(0)" }}
         >
@@ -22,7 +33,7 @@ export default function Bigf() {
               points="2560 0 2560 100 0 100"
             ></polygon>
           </svg>
-        </div>
+        </Above>
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-center lg:text-left">
             <div className="w-full lg:w-6/12 px-4">

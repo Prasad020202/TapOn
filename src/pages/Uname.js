@@ -30,11 +30,11 @@ const submitHandler = (e) =>{
   }
   const userRef = doc(collection(db, "UserInfo"), userID);
 
-  updateDoc(userRef, data)
+  setDoc(userRef, data)
     .then(() => {
         console.log("Document has been added successfully");
         
-        navigate('/dashboard');
+        navigate('/auth/selectTheme');
     })
     .catch(error => {
         console.log(error);

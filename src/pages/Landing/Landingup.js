@@ -32,7 +32,7 @@ function Landingup() {
     <div id="Showcase"><Showcase/></div>
     <div id="Team"><Team/></div>
     <div id="Faq"><Faq/></div>
-    <Faq/>
+    
     <Bigf/> 
 
 

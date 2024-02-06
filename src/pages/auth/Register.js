@@ -2,23 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Uname from "../Uname";
 import { useParams } from "react-router-dom";
-import Login from "./Login";
 
 import { useState } from 'react';
 import { createUserWithEmailAndPassword , getAdditionalUserInfo, signInWithPopup, updateProfile} from "firebase/auth";
 import { auth, db } from './firebase';
 // import { useRouter } from 'next/navigation'
 // import Link from "next/link";
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 import { GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
-const components = {
-  Login : Login,
- 
-}
 
 export default function Register() {
   const {id} = useParams();
@@ -64,7 +59,7 @@ export default function Register() {
                 //     console.log("FireStore error is",e.message);
                 // })
 
-                setDoc(userRef, data)
+                updateDoc(userRef, data)
     .then(() => {
         console.log("Document has been added successfully");
 
@@ -137,14 +132,6 @@ console.log(error);
     // ...
   });
     }
-
-
-   
-    
-    
-      
-    
-      
 
   return (
     <>
@@ -245,6 +232,7 @@ console.log(error);
                   </div>
 
                   <div className=" text-xs">
+
                     <label className="inline-flex items-center cursor-pointer">
                       <span className="ml-2 text-sm font-semibold text-blueGray-600">
                         Already have an account?{" "}
@@ -254,11 +242,14 @@ console.log(error);
                           className="text-lightBlue-500"
                           onClick={(e) => e.preventDefault()}
                         >
+                          <Link to={"/auth/Login"}>
                           Login
+                          </Link>
                         </span>
                         
                       </span>
                     </label>
+                  
                   </div>
 
                   <div className="text-center mt-6">

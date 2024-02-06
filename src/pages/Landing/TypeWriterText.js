@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import Typewriter from 'typewriter-effect';
 import  Button from '../../components/Navbars/Button';
@@ -85,6 +85,21 @@ align-self:flex-start;
 `
 
 const TypeWriterText = () => {
+  const [click, setClick] = useState(false);
+  const scrollTo = (id) => {
+    console.log('Scrolling to:', id);
+    const element = document.getElementById(id);
+    console.log('Element:', element);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    }
+    setClick(!click);
+  };
+
   return (
     <>
     <Title>
@@ -110,8 +125,8 @@ const TypeWriterText = () => {
    
     </Title>
      <SubTitle>Discover a new world of Webpages</SubTitle>
-     <ButtonContainer>
-     <Button text="Explore" link="#about"/>
+     <ButtonContainer click={click}>
+     <Button text="Explore"  onClick={() => scrollTo('About')}/>
      </ButtonContainer>
      </>
   )

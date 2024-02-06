@@ -119,11 +119,11 @@ const Carousal = () => {
         <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
         <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
         <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
+        {/* <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
         <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
         <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
         <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
-        <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
-        <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide>
+        <SwiperSlide> <img src={img1} alt ="nft imsges "/> </SwiperSlide> */}
       </Swiper>
     
       </Container>
