@@ -50,7 +50,9 @@ export default function Register() {
                 const userRef = doc(collection(db, "UserInfo"), userUID);
 
                 const data = {
-                  Full_Name : FullName
+                  Full_Name : user.displayName,
+                  Theme: "Default",
+                  email: user.email
                 }
 
                 // const docRef = await setDoc(CollectionRef, data).then((re)=>{
@@ -100,7 +102,8 @@ export default function Register() {
 
     const data = {
       Full_Name : user.displayName,
-      Theme: "Default"
+      Theme: "Default",
+      email: user.email
     }
 
     // const docRef = await setDoc(CollectionRef, data).then((re)=>{
@@ -136,8 +139,8 @@ console.log(error);
   return (
     <>
       <div className="container mx-auto px-4 h-full">
-        <div className="flex content-center items-center justify-center h-full">
-          <div className="w-full lg:w-5/12 px-4">
+        <div className="flex content-center  justify-center h-full">
+          <div className="w-full lg:w-5/12 px-4 mt-6">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">

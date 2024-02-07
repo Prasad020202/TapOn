@@ -6,16 +6,59 @@
     gap: 0.5rem;
     margin-top: 6rem;
     height: fit-content;
+    @media (max-width:64em) {
+          
+
+        height: 60%;
+        overflow: hidden;
+        overflow-y: scroll;
+        
+        
+        
+      }
 }
 
 .conatinerBox h1{
     font-size: 3rem;
     font-weight: 800;
+    @media (max-width:64em) {
+  
+
+        font-size: 2rem;
+        
+        
+        
+      }
+}
+
+
+
+.conatinerBox h3{
+    
+    @media (max-width:64em) {
+  
+
+        font-size: 1rem;
+        
+        
+        
+      }
 }
 
 .container2{
     display: flex;
     flex-direction: column;
+    @media (max-width:64em) {
+        align-items: center;
+        width: fit-content;
+  
+
+        
+        
+        
+        
+      }
+
 }
 
 .themesBox1{
@@ -24,6 +67,18 @@
     gap: 3rem;
     margin: 2.5rem 0px;
     flex-wrap: wrap;
+    @media (max-width:64em) {
+        width: 38%;
+        align-items: center;
+        /* background-color: aqua; */
+        margin-left: 10%;
+  
+
+        
+        
+        
+        
+    }
 }
 
 .template, .template2, .template3, .template4{
@@ -32,6 +87,15 @@
     border-radius: 0.8rem;
     cursor:pointer;
     /* box-shadow: rgba(248, 244, 244, 0.16) 0px 1px 4px; */
+    @media (max-width:64em) {
+        height: 40vh;
+  
+
+        
+        
+        
+        
+    }
 }
 
 .template:hover, .template2:hover, .template3:hover, .template4:hover{

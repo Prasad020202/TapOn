@@ -3,6 +3,116 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "./firebase";
 import { doc, setDoc, updateDoc } from "firebase/firestore";
 import Smallf from "../../components/Footers/Smallf";
+import styled from "styled-components";
+import ArrowL from "../../assets/img/ArrowL.png"
+
+
+
+
+
+const Cardcontainer =styled.div`
+display: flex;
+/* background-color: black; */
+width: 73em;
+/* justify-content: space-between; */
+align-items: center;
+/* overflow: hidden; */
+
+
+
+
+@media (max-width:64em) {
+  /* width: 30em; */
+  width: 100%;
+  height: 28em;
+  /* background-color: black; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-y: scroll;
+  align-items: center;
+  
+
+
+  
+}
+
+
+
+`
+
+const Card1 = styled.div`
+width:30%;
+margin-right: 4%;
+
+@media (max-width:64em) {
+  width: fit-content;
+  height: 30em;
+  margin-bottom: 4%;
+  margin-right: 0%;
+  & span#price{
+    font-size: small;
+
+
+
+  }
+
+ 
+
+  
+}
+
+
+
+`
+const Card2 = styled.div`
+width:30%;
+margin-right: 4%;
+
+@media (max-width:64em) {
+  width: fit-content;
+  height: 30em;
+  margin-bottom: 4%;
+  margin-right: 0%;
+  & span#price{
+    font-size: small;
+
+
+
+  }
+
+  
+}
+
+
+`
+const Card3 = styled.div`
+width:30%;
+
+@media (max-width:64em) {
+  width: fit-content;
+  height: 30em;
+  margin-bottom: 4%;
+  & span#price{
+    font-size: small;
+
+
+
+  }
+
+  
+}
+
+
+
+`
+
+const Imgdiv = styled.div`
+  
+
+  
+`
 
 export default function Pricing() {
 
@@ -70,10 +180,14 @@ export default function Pricing() {
     return (
       <>
 
-<container className="bg-gray-300 font-sans  lg:bg-transparent flex flex-col lg:flex-row absolute justify-center lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 px-5 xl:px-0 py-8 lg:py-0 w-full gap-6 items-center lg:items-stretch">
-          
-            <div  className="relative  border-black rounded-xl">
-              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+<container className=" font-sans  lg:bg-transparent flex flex-col lg:flex-row absolute justify-center lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 px-5 xl:px-0 py-8 lg:py-0 w-full gap-6 items-center lg:items-stretch">
+            {/*card below transition */}
+        
+            <Cardcontainer>
+              
+            <Card1  className="relative  border-black  bg-blackrounded-xl">
+             {/* card */} 
+             <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div><Guardian /></div>
                   <span className="text-3xl font-bold">Guardian</span>
@@ -104,8 +218,8 @@ export default function Pricing() {
                 <div className="border border-dashed border-[#A9A9AA] tracking-widest my-4" />
                 <div className="h-36">
                   <div className="bottom-6 left-6 right-6 absolute">
-                    <div className="flex justify-start items-baseline">
-                      <span className="text-[32px] font-bold ">Free Forever</span>
+                    <div  className="flex justify-start items-baseline">
+                      <span id="price" className="text-[32px] font-bold ">Free Forever</span>
                     </div>
                     {/* <Link to={'/dashboard'}> */}
                       <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl" onClick={AddPlanA}>
@@ -115,9 +229,9 @@ export default function Pricing() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Card1>
 
-            <div  className="relative  border-black rounded-xl">
+            <Card2  className="relative  border-black rounded-xl">
               <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div><Mage/></div>
@@ -150,7 +264,7 @@ export default function Pricing() {
                 <div className="h-36">
                   <div className="bottom-6 left-6 right-6 absolute">
                     <div className="flex justify-start items-baseline">
-                      <span className="text-[32px] font-bold ">$450</span>
+                      <span id="price" className="text-[32px] font-bold ">$450</span>
                     </div>
                     <Link to={'/dashboard'}>
                       <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl" onClick={AddPlanB}>
@@ -160,8 +274,10 @@ export default function Pricing() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div  className="relative  border-black rounded-xl">
+            </Card2>
+
+
+            <Card3  className="relative  border-black rounded-xl">
               <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div><Phantom/></div>
@@ -202,7 +318,7 @@ export default function Pricing() {
                 <div className="h-36">
                   <div className="bottom-6 left-6 right-6 absolute">
                     <div className="flex justify-start items-baseline">
-                      <span className="text-[32px] font-bold ">$600</span>
+                      <span id="price" className="text-[32px] font-bold ">$600</span>
                     </div>
                     <Link to={'/dashboard'}>
                       <button className="w-full px-4 py-3 bg-[#FFF5FA] text-[#FF1D89] group-hover:text-white group-hover:bg-[#FF1D89] rounded-xl mt-6 font-semibold text-xl" onClick={AddPlanC}>
@@ -212,7 +328,9 @@ export default function Pricing() {
                   </div>
                 </div>
               </div>
-            </div>
+              
+            </Card3>
+            </Cardcontainer>
 
         </container>
       

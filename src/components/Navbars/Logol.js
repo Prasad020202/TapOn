@@ -25,7 +25,7 @@ const Logo = () => {
   return (
     <LogoText>
 
-        <Link>Tapon</Link>
+        <Link to ="/">Tapon</Link>
     </LogoText>
   )
 }
