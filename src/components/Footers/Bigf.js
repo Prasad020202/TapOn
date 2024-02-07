@@ -1,5 +1,6 @@
-import React from "react";
+import React from "react"
 import styled from "styled-components";
+;
 const Above = styled.div`
  @media (max-width: 64em) {
   & polygon{

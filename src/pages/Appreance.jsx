@@ -541,6 +541,7 @@ const Appreance = () => {
       .then(() => {
         console.log("Document has been added successfully");
         setTheme_Selected(customTheme);
+        setTheme_url(url);
       })
       .catch((error) => {
         console.log(error);
@@ -561,9 +562,11 @@ const Appreance = () => {
     deleteObject(desertRef).then(async() => {
    
        alert("Deleted!");
+       console.log(displayPhoto);
        setDisplayPhoto(null); 
+       console.log(displayPhoto);
       //  setForceUpdate(!forceUpdate); // Force a re-render
-      setDisplayPhoto(`${desertRef}?${Date.now()}`); // Append a timestamp to the image URL
+      // setDisplayPhoto(`${desertRef}?${Date.now()}`); // Append a timestamp to the image URL
    
     }).catch((error) => {
        console.log("Profile is not deleting");
@@ -629,41 +632,6 @@ const Appreance = () => {
 
     <LeftContainer>
 
-    {isUploadModalOpen && (
-          <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-black opacity-75">
-            <div className="bg-white p-4 rounded-lg shadow-lg py-14 px-10">
-              <div className="grid grid-rows-2 gap-10">
-                <input type="file" placeholder="Upload Your Profile Pic" onChange={(e) => setUpdateProfile(e.target.files[0])} />
-                
-                <div className="grid grid-cols-2 gap-10">
-                  <button onClick={uploadProfile} className="bg-black text-white p-5 rounded-lg font-semibold">Upload Profile Picture</button>
-                  <button onClick={() => setIsUploadModalOpen(false)} className="border-4 border-black rounded-lg font-bold">Cancel</button>
-                </div>
-
-              </div>
-      
-            </div>
-          </div>
-      )}
-
-<div className="grid grid-rows-1">
-          <div className=" h-96 ">
-            <p className="text-3xl font-semibold">Profile</p>
-            <div className="grid grid-cols-2 bg-gray-400 h-60 rounded-lg p-10 m-5">
-              <div className="rounded-full bg-slate-200 w-40">
-                <img src={displayPhoto} key={displayPhoto} alt="not found" className="rounded-full w-40 h-40"/>
-              </div>
-
-              <div className="grid grid-rows-2 text-center">
-                <div className=" bg-black text-white rounded-xl pt-3 w-64 h-14" id="Upload Profile" onClick={() => setIsUploadModalOpen(true)}>Upload Profile</div>
-                <div className=" bg-white text-black rounded-xl pt-3 w-64 h-14" onClick={deleteProfile}>Remove Profile</div>
-
-                {/* <input type="file"  placeholder='Update Profile Photo'  onChange={(e)=>{setUpdateProfile(e.target.files[0])}}/>
-            <button onClick={EditProfile}>Update</button> */}
-              </div>
-            </div>
-          </div>
-        </div>
 
 
 

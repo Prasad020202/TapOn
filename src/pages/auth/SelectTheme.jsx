@@ -12,6 +12,13 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db, imageDb } from "./firebase";
 
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+
+
+
+
+
 
 export const SelectTheme = () => {
   const navigate = useNavigate();
@@ -54,33 +61,9 @@ export const SelectTheme = () => {
   };
   return (
     <>
-      {/* <div className='grid grid-rows-3 text-center text-white bg-slate-400 '>
-            <p className=' font-semibold text-4xl'>Pick a template</p>
-            <p className=''>Apply a template to your MiniSite to get started. Your can change it anytime.</p>
+      
 
-            <div className='grid grid-rows-2'>
-                <div className='grid grid-cols-2'>
-                    
-                        <img src={template1} alt="not found" id='template'/>
-                    
-
-                    
-                    <img src={template2} alt="not found" id='template'/>
-                    
-                </div>
-                <div className='grid grid-cols-2'>
-                    
-                        <img src={template3} alt="not found" id='template'/>
-                    
-
-                   
-                        <img src={template4} alt="not found" id='template'/>
-                
-                </div>
-            </div>
-        </div> */}
-
-      <div className="conatinerBox">
+      <div className="conatinerBox  " >
         <h1>Pick a template</h1>
         <h3>
           Apply a template to your MiniSite to get started. Your can change it
