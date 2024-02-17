@@ -13,6 +13,7 @@ import Remix from './pages/Remix';
 import Appreance from './pages/Appreance';
 import Landingup from './pages/Landing/Landingup'
 import Settings from './pages/Setting/Smain'
+import Services from './pages/Services';
 
 
 
@@ -48,6 +49,8 @@ function App() {
 
 
 <Route path='/update' element={<Update/>} />
+
+<Route path='/services' element={<Services/>} />
 
 <Route path='/:username/:id' element={<Profile/>} />
 

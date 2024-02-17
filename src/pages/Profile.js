@@ -801,6 +801,24 @@ const PDescriptionleft = styled.div`
      } */
 `;
 
+const Profileimg1 = styled.div`
+  display: flex;
+  width: 25%;
+  height: 5vh;
+  background-color: aliceblue;
+  border-radius: 100%;
+  margin-right: 5%;
+`;
+
+const Profileimg2 = styled.div`
+  display: flex;
+  width: 25%;
+  height: 5vh;
+  background-color: aliceblue;
+  border-radius: 100%;
+  margin-left: 5%;
+`;
+
 export default function Profile() {
 
   // const pdfRef = useRef();
@@ -845,6 +863,12 @@ export default function Profile() {
   const[displayService2, setDisplayService2] = useState("Service2");
   const[displayService3, setDisplayService3] = useState("Service3");
   const[displayService4, setDisplayService4] = useState("Service4");
+
+  const[displayServicePhoto1, setDisplayServicePhoto1] = useState("");
+  const[displayServicePhoto2, setDisplayServicePhoto2] = useState("");
+  const[displayServicePhoto3, setDisplayServicePhoto3] = useState("");
+  const[displayServicePhoto4, setDisplayServicePhoto4] = useState("");
+
   const [Theme_Selected, setTheme_Selected] = useState("Theme1");
 
   const [userEmail, setUserEmail] = useState("");
@@ -888,6 +912,12 @@ export default function Profile() {
 
     setDisplayFullName(docSnap.data().Full_Name)
     setUserEmail(docSnap.data().Email);
+
+    setDisplayServicePhoto1(docSnap.data().Service1_img);
+    setDisplayServicePhoto2(docSnap.data().Service2_img);
+    setDisplayServicePhoto3(docSnap.data().Service3_img);
+    setDisplayServicePhoto4(docSnap.data().Service4_img);
+
 
     setThemes(id);
 
@@ -1098,13 +1128,35 @@ export default function Profile() {
 
                     <Servicescontainer>
                     {displayService1 && (
-                      <CardcontainerP>{displayService1}</CardcontainerP>)}
+                      <CardcontainerP>{displayService1} 
+                      {displayServicePhoto1 && (
+                                <Profileimg1>
+                                <img src={displayServicePhoto1} alt="not found" />
+                                </Profileimg1>
+                              )}
+                      </CardcontainerP>)}
                       {displayService2 && (
-                      <CardcontainerP>{displayService2}</CardcontainerP>)}
+                      <CardcontainerP>{displayService2}
+                      {displayServicePhoto2 && (
+                                <Profileimg2>
+                                <img src={displayServicePhoto2} alt="not found" />
+                                </Profileimg2>
+                              )}
+                      </CardcontainerP>)}
                       {displayService3 && (
-                      <CardcontainerP>{displayService3}</CardcontainerP>)}
+                      <CardcontainerP>{displayService3}
+                      {displayServicePhoto3 && (
+                                <Profileimg1>
+                                <img src={displayServicePhoto3} alt="not found" />
+                                </Profileimg1>
+                              )}</CardcontainerP>)}
                       {displayService4 && (
-                      <CardcontainerP>{displayService4}</CardcontainerP>)}
+                      <CardcontainerP>{displayService4}
+                      {displayServicePhoto4 && (
+                                <Profileimg2>
+                                <img src={displayServicePhoto4} alt="not found" />
+                                </Profileimg2>
+                              )}</CardcontainerP>)}
                       
                     </Servicescontainer>
 
