@@ -180,7 +180,6 @@ const Navigation = () => {
           <MenuItems onClick={() => scrollTo('About')}>About</MenuItems>
           <MenuItems onClick={() => scrollTo('Roadmap')}>Roadmap</MenuItems>
           <MenuItems onClick={() => scrollTo('Showcase')}>Showcase</MenuItems>
-          <MenuItems onClick={() => scrollTo('Team')}>Team</MenuItems>
           <MenuItems onClick={() => scrollTo('Faq')}>Faq</MenuItems>
           <MenuItems>
           <div className="mobile">

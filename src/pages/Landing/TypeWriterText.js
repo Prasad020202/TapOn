@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Typewriter from 'typewriter-effect';
 import  Button from '../../components/Navbars/Button';
+import { Link } from 'react-router-dom';
 
 const Title = styled.h2`
 font-size: 3em;
@@ -111,7 +112,8 @@ const TypeWriterText = () => {
     </Title>
      <SubTitle>Discover a new world of Webpages</SubTitle>
      <ButtonContainer>
-     <Button text="Explore" link="#about"/>
+     <Link to="/auth/Login">
+     <Button text="Explore" /></Link>
      </ButtonContainer>
      </>
   )

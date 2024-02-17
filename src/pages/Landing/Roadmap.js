@@ -260,11 +260,11 @@ const Roadmap = () => {
             <RoadMapItem addToRefs={addToRefs} title="Title1" subtext="this is subtext 1"/>
             <RoadMapItem addToRefs={addToRefs} title="Title1" subtext="this is subtext 1"/> */}
 
-            <RoadMapItem title="Title1" subtext="this is subtext 1"/>
-            <RoadMapItem title="Title1" subtext="this is subtext 1"/>
-            <RoadMapItem title="Title1" subtext="this is subtext 1"/>
-            <RoadMapItem title="Title1" subtext="this is subtext 1"/>
-            <RoadMapItem title="Title1" subtext="this is subtext 1"/>
+            <RoadMapItem title="SELECT PIC" subtext="this is subtext 1"/>
+            <RoadMapItem title="FILL DETAILS" subtext="this is subtext 1"/>
+            <RoadMapItem title="ADD SERVICES" subtext="this is subtext 1"/>
+            <RoadMapItem title="SELECT THEMES" subtext="this is subtext 1"/>
+            <RoadMapItem title="Your Profile is ready to Share" subtext="this is subtext 1"/>
           </Items>
 
         </Container>

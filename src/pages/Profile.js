@@ -233,7 +233,7 @@ const Phonecontainer = styled.div`
   height: fit-content;
   /* position: fixed; */
   /* width: fit-content; */
-  width: 20%;
+  width: 25%;
   min-height: 45em;
    @media (max-width: 64em){
     width: 100%;
@@ -245,7 +245,45 @@ const Phonecontainer = styled.div`
   
 `;
 
+const Manidetails= styled.div`
+justify-content: center;
+align-items: center;
 
+display: flex;
+flex-direction: column;
+/* background-color: antiquewhite; */
+height: fit-content;
+width: 90%;
+word-wrap: break-word;
+& h3{
+    text-align: center;
+    margin-top: 1%;
+    
+  }
+  font-weight: bold;
+  & h1{
+     font-size: 21px;
+     margin-top: 1%;
+    }
+@media (max-width:64em ) {
+  & h1{
+    font-size: 24px;
+    font-weight: bold;
+    
+  }
+  & h2{
+      font-size: 20px;
+      font-weight: 400;
+    }
+    & h3{
+      font-size: 16px;
+      font-style: italic;
+    }
+  
+}
+
+
+`
 const PhoneContentcontainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -359,7 +397,7 @@ const Infocontainer = styled.div`
     align-items: center;
     margin-bottom: 15px;
 
-    font-size: small;
+    font-size: 16px;
 
     & img {
       margin-right: 10px;
@@ -533,36 +571,38 @@ const Servicescontainer = styled.div`
   margin-top: 10px;
   margin-bottom: 2px;
   /* background-color: aquamarine; */
-  width: 75%;
+  width: 95%;
   height: fit-content;
   padding: 2%;
-   @media (max-width: 64em) {
-    width:50%;
+  @media (max-width: 64em) {
+    align-items: center;
+
+    flex-direction: column;
+    width: 90%;
     /* background-color: antiquewhite; */
-
-
-   }
-
-
+  }
 `;
-
 const CardcontainerP = styled.div`
- border: solid 1px ;
- border-color: ${props=>props.theme.bordercolor};
+  display: flex;
+  flex-direction: row;
+ 
+  border: solid 0.5px;
+  border-color: ${(props) => props.theme.bordercolor};
+  
   margin-bottom: 2%;
   margin-top: 2%;
   font-weight: 500;
   font-style: italic;
   font-size: larger;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   display: flex;
-  min-width: 20vh;
-  min-height: 8vh;
-  background-color: ${props => props.theme.backgroundcards};
+  min-width: 100%;
+  min-height: 12vh;
+  background-color: ${(props) => props.theme.scardcolor};
   border-radius: 8px;
   @media (max-width: 64em) {
-    min-width: 15vh;
+    min-width: 100%;
     min-height: 6vh;
   }
 `;
@@ -713,7 +753,8 @@ const Maincontainer=styled.div`
 display: flex;
 justify-content: center;
 width: 100%;
-height: 100vh;
+height: 110%;
+min-height: 100vh;
 align-items: center;
 padding: 1%;
 background-color: beige;
@@ -819,6 +860,75 @@ const Profileimg2 = styled.div`
   margin-left: 5%;
 `;
 
+const Serdesc=styled.div`
+margin-top: 4%;
+display: flex;
+align-self: center;
+/* background-color: #0b3024; */
+width: 90%;
+height: fit-content;
+min-height: 8vh;
+margin-bottom: 2%;
+justify-content: center;
+word-wrap: break-word;
+font-size: 14px;
+font-weight: 500;
+text-align: justify;
+margin-bottom: 4%;
+
+`
+const Rightside=styled.div`
+/* border-left: solid 2px black; */
+display: flex;
+flex-direction: column;
+
+width: 60%;
+height: 100%;
+/* justify-content: center; */
+align-items: center;
+overflow: hidden;
+word-wrap: break-word;
+/* background-color: aqua; */
+
+
+
+  
+
+
+`
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* You can use 'cover', 'contain', 'fill', etc. depending on your requirement */
+`;
+
+const Serviceimg=styled.div`
+display: flex;
+background-color: beige;
+width: 10vh;
+height: 10vh;
+border-radius: 40px;
+ overflow: hidden;
+ @media (max-width: 64em) {
+  margin-top: 2%;
+
+  
+ }
+
+
+`
+const Profileimgcont = styled.div`
+  display: flex;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  /* background-color: #2f96f0; */
+  align-items: center;
+  justify-content: center;
+  /* border-radius: 100%; */
+  /* margin-right: 5%; */
+`;
+
 export default function Profile() {
 
   // const pdfRef = useRef();
@@ -863,6 +973,7 @@ export default function Profile() {
   const[displayService2, setDisplayService2] = useState("Service2");
   const[displayService3, setDisplayService3] = useState("Service3");
   const[displayService4, setDisplayService4] = useState("Service4");
+  const [displayServices, setDisplayServices] = useState([]);
 
   const[displayServicePhoto1, setDisplayServicePhoto1] = useState("");
   const[displayServicePhoto2, setDisplayServicePhoto2] = useState("");
@@ -917,6 +1028,8 @@ export default function Profile() {
     setDisplayServicePhoto2(docSnap.data().Service2_img);
     setDisplayServicePhoto3(docSnap.data().Service3_img);
     setDisplayServicePhoto4(docSnap.data().Service4_img);
+
+    setDisplayServices(docSnap.data().Services);
 
 
     setThemes(id);
@@ -1058,12 +1171,24 @@ export default function Profile() {
                       
                     </div>)}
 
-                    {displayCname && (
 
-                    <h1>{displayCname}</h1>)}
+                    <Manidetails>
+                    
+                     {displayCname && <h1>{displayCname}</h1>}
+                    
+                     {displayFullName && <h2>{displayFullName}</h2>}
+
+                    {displayDesc && <h3>{displayDesc}</h3>}
+
+
+                    </Manidetails>
+
+                    {/* {displayCname && (
+
+                    <h1 className=" text-2xl font-bold">{displayCname}</h1>)}
                     {displayFullName && (
                     <h2>{displayFullName}</h2>)}
-                    <h3>{displayDesc}</h3>
+                    <h3 className="text-sm font-semibold">{displayDesc}</h3> */}
 
                     <Infocontainer>
                       {displayPhoneNo && (
@@ -1126,7 +1251,52 @@ export default function Profile() {
                       )}
                     </Linkcontainer>
 
+
+
+
+
                     <Servicescontainer>
+                      <h1 className="mb-5 text-2xl font-bold">Services</h1>
+
+
+                      {displayServices && displayServices.map((service, index) => (
+                          <CardcontainerP key={index} >
+
+          
+                            <Profileimgcont>
+                              <Serviceimg>
+                                <StyledImage src={service.serviceURL} alt="not found" />
+                              </Serviceimg>
+                            
+                            </Profileimgcont>
+                      
+
+                          <Rightside>
+                        
+                              <span className=" text-2xl">{service.name}</span>
+
+                              <Serdesc>
+                              {service.description}
+                              </Serdesc>
+                            </Rightside>
+
+                          </CardcontainerP>
+                       ))} 
+
+                      
+
+                      </Servicescontainer>
+
+
+
+
+
+
+
+
+
+
+                    {/* <Servicescontainer>
                     {displayService1 && (
                       <CardcontainerP>{displayService1} 
                       {displayServicePhoto1 && (
@@ -1158,7 +1328,14 @@ export default function Profile() {
                                 </Profileimg2>
                               )}</CardcontainerP>)}
                       
-                    </Servicescontainer>
+                    </Servicescontainer> */}
+
+
+
+
+
+
+
 
                     <Cardbottoncontainer>
                       <div id="services"  onClick={Print}>

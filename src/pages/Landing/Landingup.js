@@ -31,10 +31,9 @@ function Landingup() {
     <div id="About" ><About/></div>
     <div id="Roadmap"><Roadmap/></div>
     <div id="Showcase"><Showcase/></div>
-    <div id="Team"><Team/></div>
     <div id="Faq"><Faq/></div>
 
-    <Faq/>
+   
     <Bigf/> 
 
     <ScrollToTop/>

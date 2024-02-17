@@ -249,6 +249,10 @@ flex-direction: column;
 height: fit-content;
 width: 90%;
 word-wrap: break-word;
+& h3{
+    text-align: center;
+    
+  }
 @media (max-width:64em ) {
   & h1{
     font-size: 24px;
@@ -943,6 +947,7 @@ const Cardcontent = styled.div`
 `;
 
 const Servicecards = styled.div`
+cursor: pointer;
   display: flex;
   width: fit-content;
   min-width: 15vh;
@@ -1997,6 +2002,9 @@ const addServicesInNewWay = (e) => {
     
           // Update the document with the modified array
           await updateDoc(docRef, { Services: currentArray });
+
+          setUpdateNameService("");
+          setUpdateDescService("");
     
           // Update the local state with the modified array
           setServices(currentArray);
@@ -2139,7 +2147,104 @@ const addServicesInNewWay = (e) => {
 
             {/*textbox*/}
             <LeftContent className="  h-5/6   ml-8  ">
-              {isUploadModalOpen && (
+
+
+
+
+
+
+
+
+
+
+
+
+
+               {isUploadModalOpen ? (
+                <>
+                  <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none pt-10">
+                    <div
+                      id="divmodwid"
+                      className="border-0 rounded-lg shadow-lg relative w-2/5 my-6 mx-auto"
+                    >
+                      
+                      <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                       
+                        <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                          <h3 className="text-3xl font-semibold">
+                            Add Pic
+                          </h3>
+                  
+                        </div>
+
+                      
+
+
+
+                        <div className="relative p-6 flex flex-col h-full">
+                        <input
+                        type="file"
+                        placeholder="Upload Your Profile Pic"
+                        onChange={(e) => setUpdateProfile(e.target.files[0])}
+                      />
+                         
+
+
+                        </div>
+
+                      
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                          <button
+                            type="button"
+                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            
+                            onClick={uploadProfile}
+                          >
+                            Upload Profile Picture
+                          </button>
+                          <button
+                            className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+
+                            type="button"
+                            onClick={() => setIsUploadModalOpen(false)}
+                          >
+                            Cancel
+                          </button>
+
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                </>
+              ) : null}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              {/* {isUploadModalOpen && (
                 <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-black opacity-75">
                   <div className="bg-white p-4 rounded-lg shadow-lg py-14 px-10">
                     <div className="grid grid-rows-2 gap-10">
@@ -2166,7 +2271,7 @@ const addServicesInNewWay = (e) => {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
 
               <PhotoDiv>
                 <div className="grid grid-rows-1">
@@ -2212,7 +2317,7 @@ const addServicesInNewWay = (e) => {
               <form className=" w-3/4 mt-10 mb-12 h-fit  ">
                 <div className="relative z-0 w-full mb-5 group  flex">
                   <input
-                    maxLength="14"
+                    maxLength="24"
                     type="text"
                     name="floating_email"
                     id="floating_email"
@@ -2242,6 +2347,7 @@ const addServicesInNewWay = (e) => {
                 </div>
                 <div className="relative z-0 w-full mb-5 group  flex">
                   <input
+                  maxLength="10"
                     type="text"
                     name="floating_password"
                     id="floating_password"
@@ -2301,7 +2407,7 @@ const addServicesInNewWay = (e) => {
                 </div>
                 <div className="relative z-0 w-full mb-5 group  flex">
                   <input
-                    maxLength="40"
+                    maxLength="80"
                     type="text"
                     name="repeat_password"
                     id="floating_repeat_password"
@@ -3115,7 +3221,72 @@ const addServicesInNewWay = (e) => {
                             )}
                           </Linkcontainer>
 
+
+
                           <Servicescontainer>
+                      <h1 className="mb-5">Services</h1>
+
+
+                      {displayServices && displayServices.map((service, index) => (
+                          <CardcontainerP key={index} >
+
+          
+                            <Profileimgcont>
+                              <Serviceimg>
+                                <StyledImage src={service.serviceURL} alt="not found" />
+                              </Serviceimg>
+                            
+                            </Profileimgcont>
+                      
+
+                          <Rightside>
+                        
+                              <span className=" text-2xl">{service.name}</span>
+
+                              <Serdesc>
+                              {service.description}
+                              </Serdesc>
+                            </Rightside>
+
+                          </CardcontainerP>
+                       ))} 
+
+                      {/* {displayService1 && (
+                        <CardcontainerP>
+
+                          {displayServicePhoto1 && (
+                            <Profileimgcont>
+                              <Serviceimg>
+                                <StyledImage src={displayServicePhoto1} alt="not found" />
+                              </Serviceimg>
+                            
+                            </Profileimgcont>
+                          )}
+
+                          <Rightside>
+                         
+                              <span className=" text-2xl">{displayService1}</span>
+
+                              <Serdesc>
+                              {displayService1Desc}
+                              </Serdesc>
+                            </Rightside>
+
+                        </CardcontainerP>
+                      )} */}
+
+                      </Servicescontainer>
+
+
+
+
+
+
+
+
+
+
+                          {/* <Servicescontainer>
                             {displayService1 && (
                               <CardcontainerP>{displayService1} {displayServicePhoto1 && (
                                 <Profileimg1>
@@ -3145,7 +3316,7 @@ const addServicesInNewWay = (e) => {
                                 </Profileimg2>
                               )}</CardcontainerP>
                             )}
-                          </Servicescontainer>
+                          </Servicescontainer> */}
 
                           <Cardbottoncontainer>
                             <div id="services">
@@ -3309,14 +3480,14 @@ const addServicesInNewWay = (e) => {
                       {displayServices && displayServices.map((service, index) => (
                           <CardcontainerP key={index} >
 
-                          {displayServicePhoto1 && (
+          
                             <Profileimgcont>
                               <Serviceimg>
                                 <StyledImage src={service.serviceURL} alt="not found" />
                               </Serviceimg>
                             
                             </Profileimgcont>
-                          )}
+                      
 
                           <Rightside>
                         

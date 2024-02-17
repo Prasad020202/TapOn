@@ -24,7 +24,7 @@ align-items: center;
 @media (max-width:64em) {
   /* width: 30em; */
   width: 100%;
-  height: 28em;
+  height: 50em;
   /* background-color: black; */
   overflow: hidden;
   display: flex;
@@ -187,7 +187,7 @@ export default function Pricing() {
               
             <Card1  className="relative  border-black  bg-blackrounded-xl">
              {/* card */} 
-             <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+             <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full  lg:hover:-translate-y-6 ease-in duration-300   border-xl border-#0B0641 border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div><Guardian /></div>
                   <span className="text-3xl font-bold">Guardian</span>
@@ -232,7 +232,7 @@ export default function Pricing() {
             </Card1>
 
             <Card2  className="relative  border-black rounded-xl">
-              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full  lg:hover:-translate-y-6 ease-in duration-300   border-xl  border-#0B0641 border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div><Mage/></div>
                   <span className="text-3xl font-bold">Mage</span>
@@ -278,7 +278,7 @@ export default function Pricing() {
 
 
             <Card3  className="relative  border-black rounded-xl">
-              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300   border xl:border-none border-[#0B0641] border-solid border-2 border-black rounded-xl">
+              <div className="max-w-sm xl:w-[384px] p-6 bg-white group h-full  lg:hover:-translate-y-6 ease-in duration-300   border-xl border-#0B0641 border-solid border-2 border-black rounded-xl">
                 <div className="flex flex-row gap-5 items-center">
                   <div><Phantom/></div>
                   <span className="text-3xl font-bold">Phantom</span>

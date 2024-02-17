@@ -30,7 +30,7 @@ const submitHandler = (e) =>{
   }
   const userRef = doc(collection(db, "UserInfo"), userID);
 
-  setDoc(userRef, data)
+  updateDoc(userRef, data)
     .then(() => {
         console.log("Document has been added successfully");
         

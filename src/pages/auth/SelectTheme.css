@@ -4,12 +4,13 @@
     color: white;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 6rem;
-    height: fit-content;
+    /* margin-top: 6rem; */
+    height: 85vh;
+    /* background-color: aqua; */
     @media (max-width:64em) {
           
 
-        height: 60%;
+        height: 100%;
         overflow: hidden;
         overflow-y: scroll;
         
@@ -21,6 +22,7 @@
 .conatinerBox h1{
     font-size: 3rem;
     font-weight: 800;
+    /* background-color: antiquewhite; */
     @media (max-width:64em) {
   
 
@@ -34,6 +36,7 @@
 
 
 .conatinerBox h3{
+    /* background-color: azure; */
     
     @media (max-width:64em) {
   
@@ -46,6 +49,8 @@
 }
 
 .container2{
+    /* background-color: beige; */
+    height: 80%;
     display: flex;
     flex-direction: column;
     @media (max-width:64em) {
@@ -62,11 +67,13 @@
 }
 
 .themesBox1{
+    /* background-color: blanchedalmond; */
     display: flex;
     flex-direction: row;
     gap: 3rem;
     margin: 2.5rem 0px;
     flex-wrap: wrap;
+    height: 90%;
     @media (max-width:64em) {
         width: 38%;
         align-items: center;
@@ -82,7 +89,8 @@
 }
 
 .template, .template2, .template3, .template4{
-    height: 35rem;
+
+    height: 100%;
     border: 0px;
     border-radius: 0.8rem;
     cursor:pointer;
@@ -99,7 +107,7 @@
 }
 
 .template:hover, .template2:hover, .template3:hover, .template4:hover{
-    height: 35.5rem;
+    height: 30rem;
 }
 
 .container3{

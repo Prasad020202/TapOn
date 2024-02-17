@@ -61,7 +61,7 @@ export default function Register() {
                 //     console.log("FireStore error is",e.message);
                 // })
 
-                updateDoc(userRef, data)
+                setDoc(userRef, data)
     .then(() => {
         console.log("Document has been added successfully");
 
@@ -151,7 +151,7 @@ console.log(error);
                 <div className="btn-wrapper text-center">
                  
                   <button
-                    className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
+                    className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                     type="button" onClick={SignupWithGoogle}
                   >
                     <img
